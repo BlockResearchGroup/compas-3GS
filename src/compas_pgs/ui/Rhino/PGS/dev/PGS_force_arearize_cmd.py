@@ -23,18 +23,18 @@ except ImportError:
     compas.raise_if_ironpython()
 
 
-__commandname__ = "TGS_force_arearize"
+__commandname__ = "PGS_force_arearize"
 
 
 def RunCommand(is_interactive):
 
     sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
     if not scene:
         return
 

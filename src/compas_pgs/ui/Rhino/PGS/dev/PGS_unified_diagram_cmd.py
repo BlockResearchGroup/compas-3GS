@@ -18,16 +18,16 @@ except ImportError:
     compas.raise_if_ironpython()
 
 
-__commandname__ = "TGS_unified_diagram"
+__commandname__ = "PGS_unified_diagram"
 
 
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
 
     # get ForceVolMeshObject from scene
     objects = scene.find_by_name('force')

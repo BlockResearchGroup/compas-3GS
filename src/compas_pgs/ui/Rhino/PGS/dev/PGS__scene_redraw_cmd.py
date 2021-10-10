@@ -7,21 +7,23 @@ import scriptcontext as sc
 import compas_rhino
 
 
-__commandname__ = "TGS__undo"
+__commandname__ = "PGS__scene_redraw"
 
 
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
+    sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
+
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
     if not scene:
         return
 
-    if not scene.undo():
-        compas_rhino.display_message("Nothing left to undo.")
+    scene.update()
+    scene.save()
 
 
 # ==============================================================================

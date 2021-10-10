@@ -7,28 +7,28 @@ import scriptcontext as sc
 import compas_rhino
 
 
-__commandname__ = "TGS_form_modify"
+__commandname__ = "PGS__scene_clear"
 
 
 def RunCommand(is_interactive):
 
-    sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
-
-    if '3GS' not in sc.sticky:
-        compas_rhino.display_message('3GS has not been initialised yet.')
-        return
-
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
     if not scene:
         return
 
-    scene.update()
-    scene.save()
+    options = ["Yes", "No"]
+    option = compas_rhino.rs.GetString("Clear all PGS objects?", strings=options, defaultString="No")
+    if not option:
+        return
+
+    if option == "Yes":
+        scene.clear_layers()
+        scene.purge()
+
 
 # ==============================================================================
 # Main
 # ==============================================================================
-
 
 if __name__ == '__main__':
 

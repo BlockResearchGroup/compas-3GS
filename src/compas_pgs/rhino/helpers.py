@@ -27,7 +27,7 @@ __all__ = [
     "select_vertices",
     "select_edges",
     "select_faces",
-    "tgs_undo",
+    "PGS_undo",
     "relocate_formdiagram"
 
 ]
@@ -173,11 +173,11 @@ def select_filepath_save(root, ext):
 
 
 def get_tgs():
-    if "3GS" not in sc.sticky:
-        form = TextForm('Initialise the plugin first!', '3GS')
+    if "PGS" not in sc.sticky:
+        form = TextForm('Initialise the plugin first!', 'PGS')
         form.show()
         return None
-    return sc.sticky["3GS"]
+    return sc.sticky["PGS"]
 
 
 def get_scene():
@@ -188,7 +188,7 @@ def get_scene():
 
 def get_proxy():
     if "3GS.proxy" not in sc.sticky:
-        form = TextForm('Initialise the plugin first!', '3GS')
+        form = TextForm('Initialise the plugin first!', 'PGS')
         form.show()
         return None
     return sc.sticky["3GS.proxy"]
@@ -196,7 +196,7 @@ def get_proxy():
 
 def get_system():
     if "3GS.system" not in sc.sticky:
-        form = TextForm('Initialise the plugin first!', '3GS')
+        form = TextForm('Initialise the plugin first!', 'PGS')
         form.show()
         return None
     return sc.sticky["3GS.system"]
@@ -268,7 +268,7 @@ def undo(sender, e):
     print("total sessions:", len(sc.sticky["3GS.sessions"]))
 
 
-def tgs_undo(command):
+def PGS_undo(command):
     def wrapper(*args, **kwargs):
         sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
         undoRecord = sc.doc.BeginUndoRecord("RV2 Undo")

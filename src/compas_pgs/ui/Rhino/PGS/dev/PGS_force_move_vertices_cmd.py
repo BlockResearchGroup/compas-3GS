@@ -9,47 +9,47 @@ import compas_rhino
 from compas_3gs.rhino import rhino_vertex_move
 
 
-__commandname__ = "TGS_form_move_vertices"
+__commandname__ = "PGS_force_move_vertices"
 
 
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
 
     # get ForceVolMeshObject from scene
+    objects = scene.find_by_name('force')
+    if not objects:
+        compas_rhino.display_message("There is no force diagram in the scene.")
+        return
+    force = objects[0]
+
+    # --------------------------------------------------------------------------
+
+    current_setting = force.settings['show.vertices']
+    if not current_setting:
+        force.settings['show.vertices'] = True
+        scene.update()
+
+    vertices = force.select_vertices()
+
+    rhino_vertex_move(force.diagram, vertices)
+
+    force.settings['show.vertices'] = current_setting
+
+    # --------------------------------------------------------------------------
+
     objects = scene.find_by_name('form')
     if not objects:
-        compas_rhino.display_message("There is no form diagram in the scene.")
+        force.check_eq()
+        scene.update()
         return
     form = objects[0]
 
-    # --------------------------------------------------------------------------
-
-    current_setting = form.settings['show.nodes']
-    if not current_setting:
-        form.settings['show.nodes'] = True
-        scene.update()
-
-    vertices = form.select_vertices()
-
-    rhino_vertex_move(form.diagram, vertices)
-
-    form.settings['show.nodes'] = current_setting
-
-    # --------------------------------------------------------------------------
-
     form.diagram.update_angle_deviations()
-
-    objects = scene.find_by_name('force')
-    if not objects:
-        form.check_eq()
-        scene.update()
-        return
-    force = objects[0]
 
     force.check_eq()
     form.check_eq()

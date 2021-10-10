@@ -15,17 +15,17 @@ from compas.utilities import DataDecoder
 from compas_3gs.diagrams import ForceVolMesh
 from compas_3gs.diagrams import FormNetwork
 
-__commandname__ = "TGS__session_load"
+__commandname__ = "PGS__session_load"
 
 
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    system = sc.sticky['3GS']['system']
-    scene = sc.sticky['3GS']['scene']
+    system = sc.sticky['PGS']['system']
+    scene = sc.sticky['PGS']['scene']
 
     filepath = compas_rhino.select_file(folder=system['session.dirname'], filter=system['session.extension'])
 

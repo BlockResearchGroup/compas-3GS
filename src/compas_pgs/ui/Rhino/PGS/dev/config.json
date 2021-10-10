@@ -1,0 +1,260 @@
+{
+    "plugin":
+    {
+        "id": "{7ce56e93-79c1-44ac-9716-1a53ca42ac9c}",
+        "version": "0.2.4",
+        "title": "PGS"
+    },
+    "ui":
+    {
+        "icons":
+        {
+            "bitmap": "grid.png",
+            "images":
+            [
+                "0_init",
+
+                "1_open",
+                "2_save",
+
+                "3_force",
+                "4_primal",
+
+                "5_reciprocate",
+
+                "6_force_move_vertices",
+                "7_force_pull_halffaces",
+                "8_force_planarize",
+                "9_force_arearize",
+                "10_force_modify",
+
+                "11_form_move_vertices",
+                "12_form_modify",
+
+                "13_unified_diagram",
+                "14_skeleton",
+
+                "15_settings",
+                "16_redraw",
+                "17_clear"
+
+            ]
+        },
+
+        "commands":
+        [
+            {"name": "PGS__init",
+             "menu_text": "Initialise PGS",
+             "icon":0,
+             "tooltip": "Initialise PGS"},
+
+            {"name": "PGS__undo",
+             "menu_text": "PGS undo",
+             "tooltip": "PGS undo"},
+
+            {"name": "PGS__redo",
+             "menu_text": "PGS redo",
+             "tooltip": "PGS redo"},
+
+            {"name": "PGS__session_load",
+             "menu_text": "PGS load session",
+             "icon":1,
+             "tooltip": "PGS load session"},
+
+            {"name": "PGS__session_save",
+             "menu_text": "PGS save session",
+             "icon":2,
+             "tooltip": "PGS save session"},
+
+            {"name": "PGS__scene_clear",
+             "menu_text": "PGS clear scene",
+             "icon":17,
+             "tooltip": "PGS clear scene"},
+
+            {"name": "PGS__scene_redraw",
+             "menu_text": "PGS redraw scene",
+             "icon":16,
+             "tooltip": "PGS redraw scene"},
+
+
+            {"name": "PGS_force_from_polysurfaces",
+             "menu_text": "PGS create force diagram",
+             "icon":3,
+             "tooltip": "PGS create force diagram"},
+
+            {"name": "PGS_primal",
+             "menu_text": "PGS create primal diagram",
+             "icon":4,
+             "tooltip": "PGS create primal diagram"},
+
+
+            {"name": "PGS_reciprocate",
+             "menu_text": "PGS reciprocate diagrams",
+             "icon":5,
+             "tooltip": "PGS reciprocate diagrams"},
+
+
+            {"name": "PGS_force_move_vertices",
+             "menu_text": "PGS force diagram move vertices",
+             "icon":6,
+             "tooltip": "PGS force diagram move vertices"},
+
+            {"name": "PGS_force_pull_halffaces",
+             "menu_text": "PGS force diagram move halffaces",
+             "icon":7,
+             "tooltip": "PGS force diagram move halffaces"},
+
+            {"name": "PGS_force_planarize",
+             "menu_text": "PGS force diagram planarize",
+             "icon":8,
+             "tooltip": "PGS force diagram planarize"},
+
+            {"name": "PGS_force_arearize",
+             "menu_text": "PGS force diagram arearize",
+             "icon":9,
+             "tooltip": "PGS force diagram arearize"},
+
+            {"name": "PGS_force_modify",
+             "menu_text": "PGS force diagram modify",
+             "icon":10,
+             "tooltip": "PGS force diagram modify"},
+
+
+            {"name": "PGS_form_move_vertices",
+             "menu_text": "PGS form diagram move vertices",
+             "icon":11,
+             "tooltip": "PGS form diagram move vertices"},
+
+            {"name": "PGS_form_modify",
+             "menu_text": "PGS form diagram modify",
+             "icon":12,
+             "tooltip": "PGS form diagram modify"},
+
+
+            {"name": "PGS_unified_diagram",
+             "menu_text": "PGS draw unified diagram",
+             "icon":13,
+             "tooltip": "PGS draw unified diagram"},
+
+            {"name": "PGS_skeleton",
+             "menu_text": "PGS draw skeleton",
+             "icon":14,
+             "tooltip": "PGS draw skeleton"},
+
+
+            {"name": "PGS_settings",
+             "menu_text": "PGS settings",
+             "icon":15,
+             "tooltip": "PGS settings"}
+
+        ],
+
+        "menus":
+        [
+            {
+                "name" : "PGS",
+                "items":
+                [
+                    {"command": "PGS__init"},
+
+                    {"type": "separator"},
+
+                    {"command": "PGS__session_load"},
+                    {"command": "PGS__session_save"},
+
+                    {"type": "separator"},
+
+                    {"command": "PGS_force_from_polysurfaces"},
+                    {"command": "PGS_primal"},
+
+                    {"type": "separator"},
+
+                    {"command": "PGS_reciprocate"},
+
+                    {"type": "separator"},
+
+                    {"command": "PGS_force_move_vertices"},
+                    {"command": "PGS_force_pull_halffaces"},
+                    {"command": "PGS_force_planarize"},
+                    {"command": "PGS_force_planarize"},
+
+                    {"type": "separator"},
+
+                    {"command": "PGS_form_move_vertices"},
+
+                    {"type": "separator"},
+
+                    {"command": "PGS_unified_diagram"},
+                    {"command": "PGS_skeleton"},
+
+                    {"type": "separator"},
+
+                    {"command": "PGS_settings"},
+                    {"command": "PGS__scene_redraw"},
+                    {"command": "PGS__scene_clear"}
+
+                ]
+            }
+        ],
+        "toolbars":
+        [
+            {
+                "name": "PGS",
+                "items":
+                [
+                    {"left": "PGS__init"},
+
+                    {"type": "separator"},
+
+                    {"left": "PGS__session_load"},
+                    {"left": "PGS__session_save"},
+
+                    {"type": "separator"},
+
+                    {"left": "PGS_force_from_polysurfaces"},
+                    {"left": "PGS_primal"},
+
+                    {"type": "separator"},
+
+                    {"left": "PGS_reciprocate"},
+
+                    {"type": "separator"},
+
+                    {"left": "PGS_force_move_vertices"},
+                    {"left": "PGS_force_pull_halffaces"},
+                    {"left": "PGS_force_planarize"},
+                    {"left": "PGS_force_arearize"},
+
+                    {"type": "separator"},
+
+                    {"left": "PGS_form_move_vertices"},
+
+                    {"type": "separator"},
+
+                    {"left": "PGS_unified_diagram"},
+                    {"left": "PGS_skeleton"},
+
+                    {"type": "separator"},
+
+                    {"left": "PGS_settings"},
+                    {"left": "PGS__scene_redraw"},
+                    {"left": "PGS__scene_clear"}
+
+                ]
+            }
+        ],
+        "toolbargroups":
+        [
+            {
+                "name": "PGS",
+                "toolbars":
+                [
+                    "PGS"
+                ]
+            }
+        ]
+    },
+    "settings":
+    {
+    }
+}

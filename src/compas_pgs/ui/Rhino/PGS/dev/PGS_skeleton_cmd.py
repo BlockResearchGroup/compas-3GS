@@ -21,7 +21,7 @@ from compas_skeleton.datastructure import Skeleton3D
 from compas_rhino.artists import MeshArtist
 
 
-__commandname__ = "TGS_skeleton"
+__commandname__ = "PGS_skeleton"
 
 
 def create_sk3_quad(lines, joint_width=1, leaf_width=1, joint_length=0.4):
@@ -246,11 +246,11 @@ config_modify = {
 
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
 
     # get ForceVolMeshObject from scene
     objects = scene.find_by_name('form')

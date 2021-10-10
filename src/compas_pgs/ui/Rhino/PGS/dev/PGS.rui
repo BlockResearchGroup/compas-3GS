@@ -10,7 +10,7 @@
   <menus>
     <menu guid="97c11b9c-b32d-4ce9-ade9-c192f72757aa">
       <text>
-        <locale_1033>3GS</locale_1033>
+        <locale_1033>PGS</locale_1033>
       </text>
       <menu_item guid="195b5700-6abb-4ad8-bafc-5b1b3a896095">
         <macro_id>3c00417b-adc3-49f3-9eca-7f5d7fbbecd7</macro_id>
@@ -72,11 +72,11 @@
   <tool_bar_groups>
     <tool_bar_group guid="d99c51a4-7280-42a5-abd0-b3723e03c086" dock_bar_guid32="00000000-0000-0000-0000-000000000000" dock_bar_guid64="e79d6db9-7cee-410b-9c08-362bbc332efd" active_tool_bar_group="eeb96185-4142-4b44-9f52-b89476eda220" single_file="False" hide_single_tab="False" point_floating="99,591">
       <text>
-        <locale_1033>3GS</locale_1033>
+        <locale_1033>PGS</locale_1033>
       </text>
       <tool_bar_group_item guid="eeb96185-4142-4b44-9f52-b89476eda220" major_version="1" minor_version="1">
         <text>
-          <locale_1033>3GS</locale_1033>
+          <locale_1033>PGS</locale_1033>
         </text>
         <tool_bar_id>273427e8-1e0f-4f18-a269-7a3f04afb45a</tool_bar_id>
       </tool_bar_group_item>
@@ -86,7 +86,7 @@
   <tool_bars>
     <tool_bar guid="273427e8-1e0f-4f18-a269-7a3f04afb45a">
       <text>
-        <locale_1033>3GS</locale_1033>
+        <locale_1033>PGS</locale_1033>
       </text>
       <tool_bar_item guid="fcd853a6-e791-497b-9cc3-722c60a232ee">
         <left_macro_id>3c00417b-adc3-49f3-9eca-7f5d7fbbecd7</left_macro_id>
@@ -148,10 +148,10 @@
   <macros>
     <macro_item guid="3c00417b-adc3-49f3-9eca-7f5d7fbbecd7" bitmap_id="3080a847-eaf4-492d-af63-89d89a223675">
       <text>
-        <locale_1033>TGS__init</locale_1033>
+        <locale_1033>PGS__init</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>Initialise 3GS</locale_1033>
+        <locale_1033>Initialise PGS</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -160,16 +160,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>Initialise 3GS</locale_1033>
+        <locale_1033>Initialise PGS</locale_1033>
       </menu_text>
-      <script>-_TGS__init</script>
+      <script>-_PGS__init</script>
     </macro_item>
     <macro_item guid="4f450ec1-8f70-401f-964e-04a9bb086639">
       <text>
-        <locale_1033>TGS__undo</locale_1033>
+        <locale_1033>PGS__undo</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS undo</locale_1033>
+        <locale_1033>PGS undo</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -178,16 +178,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS undo</locale_1033>
+        <locale_1033>PGS undo</locale_1033>
       </menu_text>
-      <script>-_TGS__undo</script>
+      <script>-_PGS__undo</script>
     </macro_item>
     <macro_item guid="f7029d80-c025-43e6-9a93-cee23c3b1c18">
       <text>
-        <locale_1033>TGS__redo</locale_1033>
+        <locale_1033>PGS__redo</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS redo</locale_1033>
+        <locale_1033>PGS redo</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -196,16 +196,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS redo</locale_1033>
+        <locale_1033>PGS redo</locale_1033>
       </menu_text>
-      <script>-_TGS__redo</script>
+      <script>-_PGS__redo</script>
     </macro_item>
     <macro_item guid="2fad65e7-0d61-4577-bb1a-5d1e4a616629" bitmap_id="a121b32c-697b-4320-ad6a-914cb23c2977">
       <text>
-        <locale_1033>TGS__session_load</locale_1033>
+        <locale_1033>PGS__session_load</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS load session</locale_1033>
+        <locale_1033>PGS load session</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -214,16 +214,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS load session</locale_1033>
+        <locale_1033>PGS load session</locale_1033>
       </menu_text>
-      <script>-_TGS__session_load</script>
+      <script>-_PGS__session_load</script>
     </macro_item>
     <macro_item guid="f4e4bb3e-87d8-477c-a527-2e1e843721f2" bitmap_id="d0ba8de5-b06e-4f36-ba6c-753148c4be10">
       <text>
-        <locale_1033>TGS__session_save</locale_1033>
+        <locale_1033>PGS__session_save</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS save session</locale_1033>
+        <locale_1033>PGS save session</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -232,16 +232,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS save session</locale_1033>
+        <locale_1033>PGS save session</locale_1033>
       </menu_text>
-      <script>-_TGS__session_save</script>
+      <script>-_PGS__session_save</script>
     </macro_item>
     <macro_item guid="e99658e8-0ed9-4cae-9010-38868cdf525a" bitmap_id="dd923b43-9f5f-4a2d-aeb4-2aa106a43be8">
       <text>
-        <locale_1033>TGS__scene_clear</locale_1033>
+        <locale_1033>PGS__scene_clear</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS clear scene</locale_1033>
+        <locale_1033>PGS clear scene</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -250,16 +250,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS clear scene</locale_1033>
+        <locale_1033>PGS clear scene</locale_1033>
       </menu_text>
-      <script>-_TGS__scene_clear</script>
+      <script>-_PGS__scene_clear</script>
     </macro_item>
     <macro_item guid="75404b27-5cb6-4bcd-b109-bc6ef8c39836" bitmap_id="9ce6cc7e-0bc8-4895-a41d-fee8a73e7ed0">
       <text>
-        <locale_1033>TGS__scene_redraw</locale_1033>
+        <locale_1033>PGS__scene_redraw</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS redraw scene</locale_1033>
+        <locale_1033>PGS redraw scene</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -268,16 +268,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS redraw scene</locale_1033>
+        <locale_1033>PGS redraw scene</locale_1033>
       </menu_text>
-      <script>-_TGS__scene_redraw</script>
+      <script>-_PGS__scene_redraw</script>
     </macro_item>
     <macro_item guid="981cda39-896d-4503-8cdb-7a82dea30e47" bitmap_id="43dda6f2-b5d3-4daf-86d0-24fa327035bc">
       <text>
-        <locale_1033>TGS_force_from_polysurfaces</locale_1033>
+        <locale_1033>PGS_force_from_polysurfaces</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS create force diagram</locale_1033>
+        <locale_1033>PGS create force diagram</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -286,16 +286,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS create force diagram</locale_1033>
+        <locale_1033>PGS create force diagram</locale_1033>
       </menu_text>
-      <script>-_TGS_force_from_polysurfaces</script>
+      <script>-_PGS_force_from_polysurfaces</script>
     </macro_item>
     <macro_item guid="b57b5de7-e85d-4788-8c1a-9a19bedc9c03" bitmap_id="6fda1f4c-3be9-43b8-935b-cb781333c82d">
       <text>
-        <locale_1033>TGS_primal</locale_1033>
+        <locale_1033>PGS_primal</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS create primal diagram</locale_1033>
+        <locale_1033>PGS create primal diagram</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -304,16 +304,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS create primal diagram</locale_1033>
+        <locale_1033>PGS create primal diagram</locale_1033>
       </menu_text>
-      <script>-_TGS_primal</script>
+      <script>-_PGS_primal</script>
     </macro_item>
     <macro_item guid="f5e1e721-2b6e-4653-9278-0b4a743c11b7" bitmap_id="34689a4f-3df1-40a3-a20c-fbb8d76c98e1">
       <text>
-        <locale_1033>TGS_reciprocate</locale_1033>
+        <locale_1033>PGS_reciprocate</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS reciprocate diagrams</locale_1033>
+        <locale_1033>PGS reciprocate diagrams</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -322,16 +322,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS reciprocate diagrams</locale_1033>
+        <locale_1033>PGS reciprocate diagrams</locale_1033>
       </menu_text>
-      <script>-_TGS_reciprocate</script>
+      <script>-_PGS_reciprocate</script>
     </macro_item>
     <macro_item guid="dcd1f04e-2eba-44f2-a22a-3e8144ec6587" bitmap_id="ce3a9980-8766-4a71-a6a1-f46c93fe1067">
       <text>
-        <locale_1033>TGS_force_move_vertices</locale_1033>
+        <locale_1033>PGS_force_move_vertices</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS force diagram move vertices</locale_1033>
+        <locale_1033>PGS force diagram move vertices</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -340,16 +340,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS force diagram move vertices</locale_1033>
+        <locale_1033>PGS force diagram move vertices</locale_1033>
       </menu_text>
-      <script>-_TGS_force_move_vertices</script>
+      <script>-_PGS_force_move_vertices</script>
     </macro_item>
     <macro_item guid="30b53b54-d485-4b2e-aa89-9fd02c19fe7e" bitmap_id="dd916956-a16e-4f6a-bffe-bc011d85855a">
       <text>
-        <locale_1033>TGS_force_pull_halffaces</locale_1033>
+        <locale_1033>PGS_force_pull_halffaces</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS force diagram move halffaces</locale_1033>
+        <locale_1033>PGS force diagram move halffaces</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -358,16 +358,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS force diagram move halffaces</locale_1033>
+        <locale_1033>PGS force diagram move halffaces</locale_1033>
       </menu_text>
-      <script>-_TGS_force_pull_halffaces</script>
+      <script>-_PGS_force_pull_halffaces</script>
     </macro_item>
     <macro_item guid="bc9078ab-be27-43fa-9041-bdc39f9daf91" bitmap_id="f9e5c35b-7934-4510-ab6e-a5553ee51908">
       <text>
-        <locale_1033>TGS_force_planarize</locale_1033>
+        <locale_1033>PGS_force_planarize</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS force diagram planarize</locale_1033>
+        <locale_1033>PGS force diagram planarize</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -376,16 +376,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS force diagram planarize</locale_1033>
+        <locale_1033>PGS force diagram planarize</locale_1033>
       </menu_text>
-      <script>-_TGS_force_planarize</script>
+      <script>-_PGS_force_planarize</script>
     </macro_item>
     <macro_item guid="c94168c4-d4e3-40e0-915b-153a1039faf8" bitmap_id="d3d066fa-c268-4d03-bda0-1043c2932bb4">
       <text>
-        <locale_1033>TGS_force_arearize</locale_1033>
+        <locale_1033>PGS_force_arearize</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS force diagram arearize</locale_1033>
+        <locale_1033>PGS force diagram arearize</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -394,16 +394,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS force diagram arearize</locale_1033>
+        <locale_1033>PGS force diagram arearize</locale_1033>
       </menu_text>
-      <script>-_TGS_force_arearize</script>
+      <script>-_PGS_force_arearize</script>
     </macro_item>
     <macro_item guid="3cc77650-86a9-4327-9a7a-e24aad4c82e9" bitmap_id="c4af3552-6fd3-4575-83bc-503ff8495a3c">
       <text>
-        <locale_1033>TGS_force_modify</locale_1033>
+        <locale_1033>PGS_force_modify</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS force diagram modify</locale_1033>
+        <locale_1033>PGS force diagram modify</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -412,16 +412,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS force diagram modify</locale_1033>
+        <locale_1033>PGS force diagram modify</locale_1033>
       </menu_text>
-      <script>-_TGS_force_modify</script>
+      <script>-_PGS_force_modify</script>
     </macro_item>
     <macro_item guid="ec75cbf3-8470-4709-960d-f6da75699795" bitmap_id="a7330419-4617-41a7-89ef-b296ab305901">
       <text>
-        <locale_1033>TGS_form_move_vertices</locale_1033>
+        <locale_1033>PGS_form_move_vertices</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS form diagram move vertices</locale_1033>
+        <locale_1033>PGS form diagram move vertices</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -430,16 +430,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS form diagram move vertices</locale_1033>
+        <locale_1033>PGS form diagram move vertices</locale_1033>
       </menu_text>
-      <script>-_TGS_form_move_vertices</script>
+      <script>-_PGS_form_move_vertices</script>
     </macro_item>
     <macro_item guid="05968d39-bec2-46fd-9df4-7e7920a9e46d" bitmap_id="f88ad2ce-db0e-4e3e-a12d-534150a94b5a">
       <text>
-        <locale_1033>TGS_form_modify</locale_1033>
+        <locale_1033>PGS_form_modify</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS form diagram modify</locale_1033>
+        <locale_1033>PGS form diagram modify</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -448,16 +448,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS form diagram modify</locale_1033>
+        <locale_1033>PGS form diagram modify</locale_1033>
       </menu_text>
-      <script>-_TGS_form_modify</script>
+      <script>-_PGS_form_modify</script>
     </macro_item>
     <macro_item guid="eff271f2-07a5-4301-a92b-7b7acd94916c" bitmap_id="d69e3bc6-994f-4c50-8818-524750d5a7fb">
       <text>
-        <locale_1033>TGS_unified_diagram</locale_1033>
+        <locale_1033>PGS_unified_diagram</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS draw unified diagram</locale_1033>
+        <locale_1033>PGS draw unified diagram</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -466,16 +466,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS draw unified diagram</locale_1033>
+        <locale_1033>PGS draw unified diagram</locale_1033>
       </menu_text>
-      <script>-_TGS_unified_diagram</script>
+      <script>-_PGS_unified_diagram</script>
     </macro_item>
     <macro_item guid="981a8557-66a4-44c3-ab98-de19c055594a" bitmap_id="325f4879-6f85-440b-84b6-609bd78eb4c9">
       <text>
-        <locale_1033>TGS_skeleton</locale_1033>
+        <locale_1033>PGS_skeleton</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS draw skeleton</locale_1033>
+        <locale_1033>PGS draw skeleton</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -484,16 +484,16 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS draw skeleton</locale_1033>
+        <locale_1033>PGS draw skeleton</locale_1033>
       </menu_text>
-      <script>-_TGS_skeleton</script>
+      <script>-_PGS_skeleton</script>
     </macro_item>
     <macro_item guid="94fed749-9151-4861-99d4-286552734c14" bitmap_id="559c5cc5-9691-4963-b165-2ec9997a9dcc">
       <text>
-        <locale_1033>TGS_settings</locale_1033>
+        <locale_1033>PGS_settings</locale_1033>
       </text>
       <tooltip>
-        <locale_1033>3GS settings</locale_1033>
+        <locale_1033>PGS settings</locale_1033>
       </tooltip>
       <help_text>
         <locale_1033>None</locale_1033>
@@ -502,9 +502,9 @@
         <locale_1033>None</locale_1033>
       </button_text>
       <menu_text>
-        <locale_1033>3GS settings</locale_1033>
+        <locale_1033>PGS settings</locale_1033>
       </menu_text>
-      <script>-_TGS_settings</script>
+      <script>-_PGS_settings</script>
     </macro_item>
   </macros>
   <bitmaps>

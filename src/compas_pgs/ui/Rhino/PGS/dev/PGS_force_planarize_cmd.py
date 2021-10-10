@@ -16,18 +16,18 @@ from compas_3gs.utilities import volmesh_face_flatness
 from compas_3gs.utilities import compare_initial_current
 
 
-__commandname__ = "TGS_force_planarize"
+__commandname__ = "PGS_force_planarize"
 
 
 def RunCommand(is_interactive):
 
     sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
     if not scene:
         return
 

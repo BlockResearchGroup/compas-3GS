@@ -12,16 +12,16 @@ from compas_3gs.rhino import rhino_volmesh_pull_halffaces
 
 from compas_3gs.rhino import VolmeshHalffaceInspector
 
-__commandname__ = "TGS_force_pull_halffaces"
+__commandname__ = "PGS_force_pull_halffaces"
 
 
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
 
     # get ForceVolMeshObject from scene
     objects = scene.find_by_name('force')

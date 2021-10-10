@@ -11,17 +11,17 @@ import compas_rhino
 from compas.utilities import DataEncoder
 
 
-__commandname__ = "TGS__session_save"
+__commandname__ = "PGS__session_save"
 
 
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    system = sc.sticky['3GS']['system']
-    scene = sc.sticky['3GS']['scene']
+    system = sc.sticky['PGS']['system']
+    scene = sc.sticky['PGS']['scene']
 
     filepath = compas_rhino.rs.SaveFileName('save', filter=system['session.extension'], folder=system['session.dirname'])
 

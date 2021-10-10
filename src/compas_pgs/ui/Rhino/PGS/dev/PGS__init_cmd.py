@@ -17,12 +17,12 @@ from compas_3gs.activate import check
 from compas_3gs.activate import activate
 
 
-__commandname__ = "TGS__init"
+__commandname__ = "PGS__init"
 
 
 SETTINGS = {
 
-    "3GS": {
+    "PGS": {
         "show.angles": True,
         "show.forces": False,
         "tol.angles": 1.0,
@@ -68,7 +68,7 @@ def RunCommand(is_interactive):
 
     Browser()
 
-    shelvepath = os.path.join(compas.APPTEMP, '3GS', '.history')
+    shelvepath = os.path.join(compas.APPTEMP, 'PGS', '.history')
     if not os.path.exists(os.path.dirname(shelvepath)):
         try:
             os.makedirs(os.path.dirname(shelvepath))
@@ -82,11 +82,11 @@ def RunCommand(is_interactive):
     scene = Scene(db, 20, SETTINGS)
     scene.purge()
 
-    sc.sticky["3GS"] = {
+    sc.sticky["PGS"] = {
         'system': {
             "session.dirname": CWD,
             "session.filename": None,
-            "session.extension": '3gs'
+            "session.extension": 'PGS'
         },
         'scene': scene,
     }

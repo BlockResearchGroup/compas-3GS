@@ -6,21 +6,23 @@ import scriptcontext as sc
 
 import compas_rhino
 
+from compas_3gs.rhino import SettingsForm
+from compas_3gs.rhino import ForceVolMeshObject
+from compas_3gs.rhino import FormNetworkObject
 
-__commandname__ = "TGS__scene_redraw"
+
+__commandname__ = "PGS_settings"
 
 
 def RunCommand(is_interactive):
 
-    sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
-
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
-    if not scene:
-        return
+    scene = sc.sticky['PGS']['scene']
+
+    SettingsForm.from_scene(scene, object_types=[ForceVolMeshObject, FormNetworkObject], global_settings=['PGS', 'Solvers'])
 
     scene.update()
     scene.save()

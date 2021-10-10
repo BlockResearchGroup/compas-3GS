@@ -6,19 +6,25 @@ import scriptcontext as sc
 
 import compas_rhino
 
-from compas_3gs.rhino import rhino_vertex_move
+from compas_3gs.diagrams import FormNetwork
+
+from compas.geometry import Translation
+
+from compas_3gs.algorithms import volmesh_dual_network
+
+from compas_3gs.rhino import relocate_formdiagram
 
 
-__commandname__ = "TGS_force_move_vertices"
+__commandname__ = "PGS_primal"
 
 
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
+    if 'PGS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['3GS']['scene']
+    scene = sc.sticky['PGS']['scene']
 
     # get ForceVolMeshObject from scene
     objects = scene.find_by_name('force')
@@ -27,35 +33,32 @@ def RunCommand(is_interactive):
         return
     force = objects[0]
 
-    # --------------------------------------------------------------------------
+    # make FormNetwork
+    form = volmesh_dual_network(force.diagram, cls=FormNetwork)
 
-    current_setting = force.settings['show.vertices']
-    if not current_setting:
-        force.settings['show.vertices'] = True
-        scene.update()
+    # set dual/primal
+    form.dual = force.diagram
+    force.diagram.primal = form
 
-    vertices = force.select_vertices()
+    # add FormNetworkObject
+    translation = relocate_formdiagram(force.diagram, form)
+    form.transform(Translation.from_vector(translation))
+    form.update_angle_deviations()
 
-    rhino_vertex_move(force.diagram, vertices)
+    scene.add_formnetwork(form, name='form', layer='3GS::FormDiagram')
 
-    force.settings['show.vertices'] = current_setting
-
-    # --------------------------------------------------------------------------
-
+    # form
     objects = scene.find_by_name('form')
-    if not objects:
-        force.check_eq()
-        scene.update()
-        return
     form = objects[0]
-
-    form.diagram.update_angle_deviations()
 
     force.check_eq()
     form.check_eq()
 
+    # update
     scene.update()
     scene.save()
+
+    print('Primal diagram successfully created.')
 
 
 # ==============================================================================

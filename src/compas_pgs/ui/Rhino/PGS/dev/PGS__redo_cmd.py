@@ -7,23 +7,21 @@ import scriptcontext as sc
 import compas_rhino
 
 
-__commandname__ = "TGS__scene_clear"
+__commandname__ = "PGS__redo"
 
 
 def RunCommand(is_interactive):
 
-    scene = sc.sticky['3GS']['scene']
+    if 'PGS' not in sc.sticky:
+        compas_rhino.display_message('3GS has not been initialised yet.')
+        return
+
+    scene = sc.sticky['PGS']['scene']
     if not scene:
         return
 
-    options = ["Yes", "No"]
-    option = compas_rhino.rs.GetString("Clear all 3GS objects?", strings=options, defaultString="No")
-    if not option:
-        return
-
-    if option == "Yes":
-        scene.clear_layers()
-        scene.purge()
+    if not scene.redo():
+        compas_rhino.display_message("Nothing left to redo.")
 
 
 # ==============================================================================

@@ -54,10 +54,10 @@ class ForceVolMeshObject(VolMeshObject):
             self.settings.update(settings)
 
     def check_eq(self):
-        ftol = self.scene.settings['3GS']['tol.flatness']
+        ftol = self.scene.settings['PGS']['tol.flatness']
         fmax = max(volmesh_face_flatness(self.diagram).values())
 
-        atol = self.scene.settings['3GS']['tol.angles']
+        atol = self.scene.settings['PGS']['tol.angles']
         halffaces = list(self.diagram.faces())
         amax = max(self.diagram.faces_attribute('_a', faces=halffaces))
 
@@ -289,7 +289,7 @@ class ForceVolMeshObject(VolMeshObject):
 
         colors = {face: self.settings['color.faces'] for face in halffaces}
 
-        if self.scene.settings['3GS']['show.forces']:
+        if self.scene.settings['PGS']['show.forces']:
             colors = get_force_colors_hf(self.diagram,
                                          self.diagram.primal,
                                          gradient=True)
@@ -339,8 +339,8 @@ class ForceVolMeshObject(VolMeshObject):
         # angle deviations
         # ======================================================================
 
-        if self.scene and self.scene.settings['3GS']['show.angles']:
-            tol = self.scene.settings['3GS']['tol.angles']
+        if self.scene and self.scene.settings['PGS']['show.angles']:
+            tol = self.scene.settings['PGS']['tol.angles']
             halffaces = [halfface for halfface in self.diagram.faces() if not self.diagram.is_halfface_on_boundary(halfface)]
             angles = self.diagram.faces_attribute('_a', faces=halffaces)
             amin = min(angles)
