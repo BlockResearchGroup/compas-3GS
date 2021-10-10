@@ -12,7 +12,7 @@ import importlib
 
 
 PLUGIN_NAME = "PGS"
-PACKAGES = ['compas', 'compas_rhino', 'compas_3gs', 'compas_skeleton']
+PACKAGES = ['compas', 'compas_rhino', 'compas_3gs', 'compas_skeleton', 'compas_pgs']
 
 
 def is_editable(project_name):
@@ -27,7 +27,7 @@ def is_editable(project_name):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
-        description='compas_igs Installation command-line utility.')
+        description='compas_pgs Installation command-line utility.')
 
     parser.add_argument('--remove_plugins', action='store_true', help="remove all existing plugins")
     parser.add_argument('--remove_packages', action='store_true', help="remove all existing compas packages")
@@ -45,8 +45,8 @@ if __name__ == '__main__':
         else:
             print('   {} {}'.format(p.ljust(20), "OK"))
 
-    is_dev = is_editable("compas-igs")
-    print("compas_igs is editable install: ", is_dev)
+    is_dev = is_editable("compas-pgs")
+    print("compas_pgs is editable install: ", is_dev)
 
     if args.remove_plugins:
         print("\n", "-"*10, "Removing existing plugins", "-"*10)
@@ -60,10 +60,10 @@ if __name__ == '__main__':
         print("\n", "-"*10, "Removing existing packages", "-"*10)
         uninstall()
 
-    print("\n", "-"*10, "Installing compas_ags python plugin", "-"*10)
+    print("\n", "-"*10, "Installing compas_pgs python plugin", "-"*10)
 
     plugin_path = os.path.dirname(__file__)
-    plugin_path = os.path.join(plugin_path, 'ui/Rhino/IGS')
+    plugin_path = os.path.join(plugin_path, 'ui/Rhino/PGS')
     plugin_path = os.path.abspath(plugin_path)
 
     if os.path.exists(plugin_path):

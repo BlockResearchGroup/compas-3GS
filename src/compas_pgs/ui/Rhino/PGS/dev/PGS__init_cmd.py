@@ -11,10 +11,10 @@ import scriptcontext as sc
 import compas
 import compas_rhino
 
-from compas_3gs.rhino import Scene
-from compas_3gs.rhino import Browser
-from compas_3gs.activate import check
-from compas_3gs.activate import activate
+from compas_pgs.rhino import Scene
+from compas_pgs.rhino import Browser
+from compas_pgs.activate import check
+from compas_pgs.activate import activate
 
 
 __commandname__ = "PGS__init"
