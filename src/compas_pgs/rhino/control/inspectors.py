@@ -73,9 +73,9 @@ class VolmeshVertexInspector(BaseConduit):
             text = str(index)
             v01 = subtract_vectors(p1, p0)
             v02 = subtract_vectors(p2, p0)
-            l = length_vector(cross_vectors(v01, v02))
+            length = length_vector(cross_vectors(v01, v02))
 
-            if l12 == 0.0 or (l / l12) < self.tol:
+            if l12 == 0.0 or (length / l12) < self.tol:
                 point = Point3d(*p0)
                 e.Display.DrawDot(point, text, self.dotcolor, self.textcolor)
 
@@ -137,9 +137,9 @@ class VolmeshHalffaceInspector(BaseConduit):
             p0 = self.volmesh.halfface_center(hfkey)
             v01 = subtract_vectors(p1, p0)
             v02 = subtract_vectors(p2, p0)
-            l = length_vector(cross_vectors(v01, v02))
+            length = length_vector(cross_vectors(v01, v02))
 
-            if l12 == 0.0 or (l / l12) < self.tol:
+            if l12 == 0.0 or (length / l12) < self.tol:
 
                 face_coordinates = self.volmesh.halfface_coordinates(hfkey)
                 face_coordinates.append(face_coordinates[0])
@@ -208,11 +208,11 @@ class VolmeshCellInspector(BaseConduit):
             p0 = self.volmesh.cell_center(ckey)
             v01 = subtract_vectors(p1, p0)
             v02 = subtract_vectors(p2, p0)
-            l = length_vector(cross_vectors(v01, v02))
+            length = length_vector(cross_vectors(v01, v02))
             color = self.edgecolor
             if self.color_dict:
                 color = FromArgb(*self.color_dict[ckey])
-            if l12 == 0.0 or (l / l12) < self.tol:
+            if l12 == 0.0 or (length / l12) < self.tol:
                 for hfkey in self.volmesh.cell_halffaces(ckey):
                     vkeys = self.volmesh.halfface_vertices(hfkey)
                     face_coordinates = [self.volmesh.vertex_coordinates(vkey) for vkey in vkeys]
@@ -281,9 +281,9 @@ class BiCellInspector(BaseConduit):
             dual_p0 = self.network.vertex_coordinates(ckey)
             v01 = subtract_vectors(p1, p0)
             v02 = subtract_vectors(p2, p0)
-            l = length_vector(cross_vectors(v01, v02))
+            length = length_vector(cross_vectors(v01, v02))
 
-            if l12 == 0.0 or (l / l12) < self.tol:
+            if l12 == 0.0 or (length / l12) < self.tol:
 
                 hf_colors = {}
 
