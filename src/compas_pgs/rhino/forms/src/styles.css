@@ -16,20 +16,19 @@ body{
     top: 0;
     z-index: -100;
     -webkit-app-region: drag;
-    opacity: 0.4;
 }
 
-#logo{
+/* #logo{
     position: fixed;
     right: 8%;
     bottom: 12%;
     z-index: 100;
-}
+} */
 
-#logo img{
+/* #logo img{
     margin-left: 20px;
     height: 25px;
-}
+} */
 
 #content{
     /* margin: 3%; */
@@ -61,7 +60,7 @@ a:visited{
 
 #terms{
     position: absolute;
-    top: 80%;
+    top: 81%;
     left: 8%;
     font-size: xx-small;
 }
@@ -89,14 +88,13 @@ a:visited{
     text-decoration: none;
 }
 
-
 #version{
     position: fixed;
-    left: 8%;
-    top: 43%;
+    left: 29%;
+    top: 52%;
 }
 
-#title{
+/* #title{
     position: fixed;
     left: 8%;
     bottom: 55%;
@@ -109,4 +107,4 @@ a:visited{
 #title h1{
     font-size: 40pt;
     font-weight: 100;
-}
+} */
