@@ -9,6 +9,8 @@ import os
 import json
 import sys
 import importlib
+from subprocess import call
+from shutil import copyfile
 
 
 PLUGIN_NAME = "PGS"
@@ -85,6 +87,10 @@ if __name__ == '__main__':
     print("CONDA_EXE", os.environ.get("CONDA_EXE"))
 
     install(packages=PACKAGES, version=args.rhino_version)
+
+    if compas.WINDOWS:
+        call(sys.executable + " " + os.path.join(plugin_path, 'dev', 'rui.py'), shell=True)
+        copyfile(os.path.join(plugin_path, 'dev', 'PGS.rui'), os.path.join(python_plugins_path, '..', '..', 'UI', 'PGS.rui'))
 
     print("\n", "-"*10, "Installation is successful", "-"*10)
 
