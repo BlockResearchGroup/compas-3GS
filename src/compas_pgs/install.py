@@ -80,9 +80,9 @@ if __name__ == '__main__':
         os.environ["CONDA_DEFAULT_ENV"] = ""
         os.environ["CONDA_EXE"] = ""
 
-    print("CONDA_PREFIX", os.environ["CONDA_PREFIX"])
-    print("CONDA_DEFAULT_ENV", os.environ["CONDA_DEFAULT_ENV"])
-    print("CONDA_EXE", os.environ["CONDA_EXE"])
+    print("CONDA_PREFIX", os.environ.get("CONDA_PREFIX"))
+    print("CONDA_DEFAULT_ENV", os.environ.get("CONDA_DEFAULT_ENV"))
+    print("CONDA_EXE", os.environ.get("CONDA_EXE"))
 
     install(packages=PACKAGES, version=args.rhino_version)
 
