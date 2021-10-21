@@ -28,7 +28,7 @@ optional_requirements = {}
 
 setup(
     name="compas_pgs",
-    version="0.1.4rc0",
+    version="0.1.4",
     description="Polyhedral 3D graphic statics based on compas_3gs",
     long_description=long_description,
     long_description_content_type="text/markdown",
