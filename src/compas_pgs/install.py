@@ -13,7 +13,7 @@ from subprocess import call
 from shutil import copyfile
 
 
-PLUGIN_NAME = "PGS"
+PLUGIN_NAME = "3GS"
 PACKAGES = ['compas', 'compas_rhino', 'compas_3gs', 'compas_skeleton', 'compas_pgs']
 
 
@@ -29,7 +29,7 @@ def is_editable(project_name):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
-        description='compas_pgs Installation command-line utility.')
+        description='3GS Installation command-line utility.')
 
     parser.add_argument('--remove_plugins', action='store_true', help="remove all existing plugins")
     parser.add_argument('--remove_packages', action='store_true', help="remove all existing compas packages")
@@ -47,8 +47,8 @@ if __name__ == '__main__':
         else:
             print('   {} {}'.format(p.ljust(20), "OK"))
 
-    is_dev = is_editable("compas-pgs")
-    print("compas_pgs is editable install: ", is_dev)
+    is_dev = is_editable("compas-3GS")
+    print("3GS is editable install: ", is_dev)
 
     if args.remove_plugins:
         print("\n", "-"*10, "Removing existing plugins", "-"*10)
@@ -62,10 +62,10 @@ if __name__ == '__main__':
         print("\n", "-"*10, "Removing existing packages", "-"*10)
         uninstall()
 
-    print("\n", "-"*10, "Installing compas_pgs python plugin", "-"*10)
+    print("\n", "-"*10, "Installing 3GS python plugin", "-"*10)
 
     plugin_path = os.path.dirname(__file__)
-    plugin_path = os.path.join(plugin_path, 'ui/Rhino/PGS')
+    plugin_path = os.path.join(plugin_path, 'ui/Rhino/3GS')
     plugin_path = os.path.abspath(plugin_path)
 
     if os.path.exists(plugin_path):
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
     if compas.WINDOWS:
         call(sys.executable + " " + os.path.join(plugin_path, 'dev', 'rui.py'), shell=True)
-        copyfile(os.path.join(plugin_path, 'dev', 'PGS.rui'), os.path.join(python_plugins_path, '..', '..', 'UI', 'PGS.rui'))
+        copyfile(os.path.join(plugin_path, 'dev', '3GS.rui'), os.path.join(python_plugins_path, '..', '..', 'UI', '3GS.rui'))
 
     print("\n", "-"*10, "Installation is successful", "-"*10)
 

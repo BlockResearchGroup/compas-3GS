@@ -4,7 +4,7 @@ import compas
 import importlib
 import subprocess
 
-PLUGIN_NAME = "PGS"
+PLUGIN_NAME = "3GS"
 
 
 def run(cmd):
