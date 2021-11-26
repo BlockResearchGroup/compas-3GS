@@ -22,7 +22,7 @@ __commandname__ = "PGS__init"
 
 SETTINGS = {
 
-    "PGS": {
+    "3GS": {
         "show.angles": True,
         "show.forces": False,
         "tol.angles": 1.0,
@@ -82,7 +82,7 @@ def RunCommand(is_interactive):
     scene = Scene(db, 20, SETTINGS)
     scene.purge()
 
-    sc.sticky["PGS"] = {
+    sc.sticky["3GS"] = {
         'system': {
             "session.dirname": CWD,
             "session.filename": None,

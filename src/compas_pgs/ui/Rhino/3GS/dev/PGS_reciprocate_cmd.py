@@ -16,11 +16,11 @@ __commandname__ = "PGS_reciprocate"
 
 def RunCommand(is_interactive):
 
-    if 'PGS' not in sc.sticky:
+    if '3GS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['PGS']['scene']
+    scene = sc.sticky['3GS']['scene']
 
     # get ForceVolMeshObject from scene
     objects = scene.find_by_name('force')
@@ -107,7 +107,7 @@ def RunCommand(is_interactive):
                                 edge_max=scene.settings['Solvers']['reciprocation.l_max'],
                                 fix_vkeys=fix_vertices,
                                 kmax=kmax,
-                                tolerance=scene.settings['PGS']['tol.angles'],
+                                tolerance=scene.settings['3GS']['tol.angles'],
                                 callback=callback,
                                 print_result_info=True)
 
@@ -119,7 +119,7 @@ def RunCommand(is_interactive):
                             edge_min=scene.settings['Solvers']['reciprocation.l_min'],
                             edge_max=scene.settings['Solvers']['reciprocation.l_max'],
                             fix_vkeys=fix_vertices,
-                            tolerance=scene.settings['PGS']['tol.angles'],
+                            tolerance=scene.settings['3GS']['tol.angles'],
                             callback=callback,
                             print_result_info=True)
 

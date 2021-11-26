@@ -17,7 +17,7 @@ __all__ = ["AttributesForm"]
 
 
 def get_scene():
-    return sc.sticky['PGS']['scene']
+    return sc.sticky['3GS']['scene']
 
 
 class Tree_Table(forms.TreeGridView):

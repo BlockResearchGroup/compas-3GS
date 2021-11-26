@@ -23,11 +23,11 @@ def RunCommand(is_interactive):
 
     sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
 
-    if 'PGS' not in sc.sticky:
+    if '3GS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['PGS']['scene']
+    scene = sc.sticky['3GS']['scene']
     if not scene:
         return
 

@@ -16,12 +16,12 @@ __commandname__ = "PGS__session_save"
 
 def RunCommand(is_interactive):
 
-    if 'PGS' not in sc.sticky:
+    if '3GS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    system = sc.sticky['PGS']['system']
-    scene = sc.sticky['PGS']['scene']
+    system = sc.sticky['3GS']['system']
+    scene = sc.sticky['3GS']['scene']
 
     filepath = compas_rhino.rs.SaveFileName('save', filter=system['session.extension'], folder=system['session.dirname'])
 

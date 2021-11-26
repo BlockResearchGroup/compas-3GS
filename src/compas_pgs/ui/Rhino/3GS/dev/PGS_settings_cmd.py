@@ -16,13 +16,13 @@ __commandname__ = "PGS_settings"
 
 def RunCommand(is_interactive):
 
-    if 'PGS' not in sc.sticky:
+    if '3GS' not in sc.sticky:
         compas_rhino.display_message('3GS has not been initialised yet.')
         return
 
-    scene = sc.sticky['PGS']['scene']
+    scene = sc.sticky['3GS']['scene']
 
-    SettingsForm.from_scene(scene, object_types=[ForceVolMeshObject, FormNetworkObject], global_settings=['PGS', 'Solvers'])
+    SettingsForm.from_scene(scene, object_types=[ForceVolMeshObject, FormNetworkObject], global_settings=['3GS', 'Solvers'])
 
     scene.update()
     scene.save()

@@ -12,7 +12,7 @@ __commandname__ = "PGS__scene_clear"
 
 def RunCommand(is_interactive):
 
-    scene = sc.sticky['PGS']['scene']
+    scene = sc.sticky['3GS']['scene']
     if not scene:
         return
 

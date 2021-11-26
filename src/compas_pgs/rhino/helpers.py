@@ -173,11 +173,11 @@ def select_filepath_save(root, ext):
 
 
 def get_tgs():
-    if "PGS" not in sc.sticky:
-        form = TextForm('Initialise the plugin first!', 'PGS')
+    if "3GS" not in sc.sticky:
+        form = TextForm('Initialise the plugin first!', '3GS')
         form.show()
         return None
-    return sc.sticky["PGS"]
+    return sc.sticky["3GS"]
 
 
 def get_scene():
@@ -188,7 +188,7 @@ def get_scene():
 
 def get_proxy():
     if "3GS.proxy" not in sc.sticky:
-        form = TextForm('Initialise the plugin first!', 'PGS')
+        form = TextForm('Initialise the plugin first!', '3GS')
         form.show()
         return None
     return sc.sticky["3GS.proxy"]
@@ -196,7 +196,7 @@ def get_proxy():
 
 def get_system():
     if "3GS.system" not in sc.sticky:
-        form = TextForm('Initialise the plugin first!', 'PGS')
+        form = TextForm('Initialise the plugin first!', '3GS')
         form.show()
         return None
     return sc.sticky["3GS.system"]
@@ -255,7 +255,7 @@ def undo(sender, e):
         sc.sticky["3GS.sessions.current"] -= 1
         session = sc.sticky["3GS.sessions"][sc.sticky["3GS.sessions.current"]]
         load_session(session)
-        e.Document.AddCustomUndoEvent("RV2 Redo", undo, "redo")
+        e.Document.AddCustomUndoEvent("3GS Redo", undo, "redo")
     if e.Tag == "redo":
         if sc.sticky["3GS.sessions.current"] + 1 >= len(sc.sticky["3GS.sessions"]):
             print("no more recorded sessions to redo")
@@ -263,7 +263,7 @@ def undo(sender, e):
         sc.sticky["3GS.sessions.current"] += 1
         session = sc.sticky["3GS.sessions"][sc.sticky["3GS.sessions.current"]]
         load_session(session)
-        e.Document.AddCustomUndoEvent("RV2 Redo", undo, "undo")
+        e.Document.AddCustomUndoEvent("3GS Redo", undo, "undo")
     print("current sessions:", sc.sticky["3GS.sessions.current"] + 1)
     print("total sessions:", len(sc.sticky["3GS.sessions"]))
 
@@ -271,7 +271,7 @@ def undo(sender, e):
 def PGS_undo(command):
     def wrapper(*args, **kwargs):
         sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
-        undoRecord = sc.doc.BeginUndoRecord("RV2 Undo")
+        undoRecord = sc.doc.BeginUndoRecord("3GS Undo")
         if undoRecord == 0:
             print("undo record did not start")
         else:

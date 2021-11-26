@@ -93,7 +93,7 @@ class FormNetworkObject(NetworkObject):
         self._guid_pipe = dict(values)
 
     def check_eq(self):
-        tol = self.scene.settings['PGS']['tol.angles']
+        tol = self.scene.settings['3GS']['tol.angles']
         edges = list(self.diagram.edges())
         angles = self.diagram.edges_attribute('_a', keys=edges)
         amax = max(angles)
@@ -240,7 +240,7 @@ class FormNetworkObject(NetworkObject):
         if self.settings['show.edges']:
             edges = list(self.diagram.edges())
             colors = {edge: self.settings['color.edges'] for edge in edges}
-            if self.scene.settings['PGS']['show.forces']:
+            if self.scene.settings['3GS']['show.forces']:
                 colors = get_force_colors_uv(self.diagram.dual,
                                              self.diagram,
                                              gradient=True)
@@ -260,8 +260,8 @@ class FormNetworkObject(NetworkObject):
         # Draw angle deviatinos as FormNetwork edge labels.
         # ======================================================================
 
-        if self.scene and self.scene.settings['PGS']['show.angles']:
-            tol = self.scene.settings['PGS']['tol.angles']
+        if self.scene and self.scene.settings['3GS']['show.angles']:
+            tol = self.scene.settings['3GS']['tol.angles']
             edges = list(self.diagram.edges())
             angles = self.diagram.edges_attribute('_a', keys=edges)
             amin = min(angles)
@@ -298,7 +298,7 @@ class FormNetworkObject(NetworkObject):
             edges = list(self.diagram.edges())
             colors = {edge: self.settings['color.pipes'] for edge in edges}
 
-            if self.scene.settings['PGS']['show.forces']:
+            if self.scene.settings['3GS']['show.forces']:
                 colors = get_force_colors_uv(self.diagram.dual,
                                              self.diagram,
                                              gradient=True)
