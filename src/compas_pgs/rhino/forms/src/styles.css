@@ -52,7 +52,7 @@ a:visited{
 
 #links{
     position: absolute;
-    top: 60%;
+    top: 62%;
     left: 6.5%;
     line-height: 1.5;
     /* margin-top: 30%; */
@@ -60,7 +60,7 @@ a:visited{
 
 #terms{
     position: absolute;
-    top: 81%;
+    top: 78%;
     left: 6.5%;
     font-size: xx-small;
 }
@@ -89,6 +89,7 @@ a:visited{
 }
 
 #version{
+    font-size: small;
     position: fixed;
     left: 6.5%;
     top: 52%;
