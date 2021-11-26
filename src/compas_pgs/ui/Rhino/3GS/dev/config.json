@@ -2,8 +2,8 @@
     "plugin":
     {
         "id": "{7ce56e93-79c1-44ac-9716-1a53ca42ac9c}",
-        "version": "0.2.4",
-        "title": "PGS"
+        "version": "0.1.5",
+        "title": "3GS"
     },
     "ui":
     {
@@ -44,115 +44,115 @@
         "commands":
         [
             {"name": "PGS__init",
-             "menu_text": "Initialise PGS",
+             "menu_text": "Initialise 3GS",
              "icon":0,
-             "tooltip": "Initialise PGS"},
+             "tooltip": "Initialise 3GS"},
 
             {"name": "PGS__undo",
-             "menu_text": "PGS undo",
-             "tooltip": "PGS undo"},
+             "menu_text": "3GS undo",
+             "tooltip": "3GS undo"},
 
             {"name": "PGS__redo",
-             "menu_text": "PGS redo",
-             "tooltip": "PGS redo"},
+             "menu_text": "3GS redo",
+             "tooltip": "3GS redo"},
 
             {"name": "PGS__session_load",
-             "menu_text": "PGS load session",
+             "menu_text": "3GS load session",
              "icon":1,
-             "tooltip": "PGS load session"},
+             "tooltip": "3GS load session"},
 
             {"name": "PGS__session_save",
-             "menu_text": "PGS save session",
+             "menu_text": "3GS save session",
              "icon":2,
-             "tooltip": "PGS save session"},
+             "tooltip": "3GS save session"},
 
             {"name": "PGS__scene_clear",
-             "menu_text": "PGS clear scene",
+             "menu_text": "3GS clear scene",
              "icon":17,
-             "tooltip": "PGS clear scene"},
+             "tooltip": "3GS clear scene"},
 
             {"name": "PGS__scene_redraw",
-             "menu_text": "PGS redraw scene",
+             "menu_text": "3GS redraw scene",
              "icon":16,
-             "tooltip": "PGS redraw scene"},
+             "tooltip": "3GS redraw scene"},
 
 
             {"name": "PGS_force_from_polysurfaces",
-             "menu_text": "PGS create force diagram",
+             "menu_text": "3GS create force diagram",
              "icon":3,
-             "tooltip": "PGS create force diagram"},
+             "tooltip": "3GS create force diagram"},
 
             {"name": "PGS_primal",
-             "menu_text": "PGS create primal diagram",
+             "menu_text": "3GS create primal diagram",
              "icon":4,
-             "tooltip": "PGS create primal diagram"},
+             "tooltip": "3GS create primal diagram"},
 
 
             {"name": "PGS_reciprocate",
-             "menu_text": "PGS reciprocate diagrams",
+             "menu_text": "3GS reciprocate diagrams",
              "icon":5,
-             "tooltip": "PGS reciprocate diagrams"},
+             "tooltip": "3GS reciprocate diagrams"},
 
 
             {"name": "PGS_force_move_vertices",
-             "menu_text": "PGS force diagram move vertices",
+             "menu_text": "3GS force diagram move vertices",
              "icon":6,
-             "tooltip": "PGS force diagram move vertices"},
+             "tooltip": "3GS force diagram move vertices"},
 
             {"name": "PGS_force_pull_halffaces",
-             "menu_text": "PGS force diagram move halffaces",
+             "menu_text": "3GS force diagram move halffaces",
              "icon":7,
-             "tooltip": "PGS force diagram move halffaces"},
+             "tooltip": "3GS force diagram move halffaces"},
 
             {"name": "PGS_force_planarize",
-             "menu_text": "PGS force diagram planarize",
+             "menu_text": "3GS force diagram planarize",
              "icon":8,
-             "tooltip": "PGS force diagram planarize"},
+             "tooltip": "3GS force diagram planarize"},
 
             {"name": "PGS_force_arearize",
-             "menu_text": "PGS force diagram arearize",
+             "menu_text": "3GS force diagram arearize",
              "icon":9,
-             "tooltip": "PGS force diagram arearize"},
+             "tooltip": "3GS force diagram arearize"},
 
             {"name": "PGS_force_modify",
-             "menu_text": "PGS force diagram modify",
+             "menu_text": "3GS force diagram modify",
              "icon":10,
-             "tooltip": "PGS force diagram modify"},
+             "tooltip": "3GS force diagram modify"},
 
 
             {"name": "PGS_form_move_vertices",
-             "menu_text": "PGS form diagram move vertices",
+             "menu_text": "3GS form diagram move vertices",
              "icon":11,
-             "tooltip": "PGS form diagram move vertices"},
+             "tooltip": "3GS form diagram move vertices"},
 
             {"name": "PGS_form_modify",
-             "menu_text": "PGS form diagram modify",
+             "menu_text": "3GS form diagram modify",
              "icon":12,
-             "tooltip": "PGS form diagram modify"},
+             "tooltip": "3GS form diagram modify"},
 
 
             {"name": "PGS_unified_diagram",
-             "menu_text": "PGS draw unified diagram",
+             "menu_text": "3GS draw unified diagram",
              "icon":13,
-             "tooltip": "PGS draw unified diagram"},
+             "tooltip": "3GS draw unified diagram"},
 
             {"name": "PGS_skeleton",
-             "menu_text": "PGS draw skeleton",
+             "menu_text": "3GS draw skeleton",
              "icon":14,
-             "tooltip": "PGS draw skeleton"},
+             "tooltip": "3GS draw skeleton"},
 
 
             {"name": "PGS_settings",
-             "menu_text": "PGS settings",
+             "menu_text": "3GS settings",
              "icon":15,
-             "tooltip": "PGS settings"}
+             "tooltip": "3GS settings"}
 
         ],
 
         "menus":
         [
             {
-                "name" : "PGS",
+                "name" : "3GS",
                 "items":
                 [
                     {"command": "PGS__init"},
@@ -199,7 +199,7 @@
         "toolbars":
         [
             {
-                "name": "PGS",
+                "name": "3GS",
                 "items":
                 [
                     {"left": "PGS__init"},
@@ -246,10 +246,10 @@
         "toolbargroups":
         [
             {
-                "name": "PGS",
+                "name": "3GS",
                 "toolbars":
                 [
-                    "PGS"
+                    "3GS"
                 ]
             }
         ]

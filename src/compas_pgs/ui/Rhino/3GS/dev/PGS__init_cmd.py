@@ -68,7 +68,7 @@ def RunCommand(is_interactive):
 
     Browser()
 
-    shelvepath = os.path.join(compas.APPTEMP, 'PGS', '.history')
+    shelvepath = os.path.join(compas.APPTEMP, '3GS', '.history')
     if not os.path.exists(os.path.dirname(shelvepath)):
         try:
             os.makedirs(os.path.dirname(shelvepath))
@@ -86,7 +86,7 @@ def RunCommand(is_interactive):
         'system': {
             "session.dirname": CWD,
             "session.filename": None,
-            "session.extension": 'PGS'
+            "session.extension": '3gs'
         },
         'scene': scene,
     }

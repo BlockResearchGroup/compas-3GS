@@ -6,7 +6,7 @@ import scriptcontext as sc
 
 import compas_rhino
 
-from compas_rhino.objects.select import mesh_select_face
+from compas_rhino.objects import mesh_select_face
 
 from compas_3gs.rhino import rhino_volmesh_pull_halffaces
 

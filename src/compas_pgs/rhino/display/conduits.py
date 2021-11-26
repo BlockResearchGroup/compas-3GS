@@ -54,7 +54,6 @@ class MeshConduit(BaseConduit):
 
     def __init__(self, mesh, face_colordict={}, **kwargs):
         super(MeshConduit, self).__init__(**kwargs)
-
         self.mesh = mesh
         self.face_colordict = face_colordict
 
@@ -88,7 +87,6 @@ class VolmeshConduit(BaseConduit):
 
     def __init__(self, volmesh, face_colordict={}, **kwargs):
         super(VolmeshConduit, self).__init__(**kwargs)
-
         self.volmesh = volmesh
         self.face_colordict = face_colordict
 
