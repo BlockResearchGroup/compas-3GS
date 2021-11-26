@@ -56,13 +56,17 @@ class ForceVolMeshObject(VolMeshObject):
     def check_eq(self):
         ftol = self.scene.settings['PGS']['tol.flatness']
         fmax = max(volmesh_face_flatness(self.diagram).values())
+        if not self.diagram.primal:
+            if fmax < ftol:
+                self.settings['_is.valid'] = True
+            else:
+                self.settings['_is.valid'] = False
+            return
 
         atol = self.scene.settings['PGS']['tol.angles']
         halffaces = list(self.diagram.faces())
         amax = max(self.diagram.faces_attribute('_a', faces=halffaces))
 
-        if fmax > ftol or amax > atol:
-            self.settings['_is.valid'] = False
         if fmax < ftol and amax < atol:
             self.settings['_is.valid'] = True
 
@@ -295,8 +299,9 @@ class ForceVolMeshObject(VolMeshObject):
                                          gradient=True)
             halffaces = colors.keys()
 
-        colordict = {face: colors[face] if self.settings['_is.valid'] else self.settings['color.invalid'] for face in halffaces}
 
+        colordict = {face: colors[face] if self.settings['_is.valid'] else self.settings['color.invalid'] for face in halffaces}
+        print(colordict)
         if self.settings['show.faces']:
             guids = self.artist.draw_faces(halffaces, colordict)
             self.guid_face = zip(guids, halffaces)

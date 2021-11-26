@@ -45,6 +45,7 @@ def RunCommand(is_interactive):
     objects = scene.find_by_name('form')
     if not objects:
         force.check_eq()
+        print(force.settings['_is.valid'])
         scene.update()
         return
     form = objects[0]

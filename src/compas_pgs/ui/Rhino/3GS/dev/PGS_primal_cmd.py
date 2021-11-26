@@ -51,8 +51,8 @@ def RunCommand(is_interactive):
     objects = scene.find_by_name('form')
     form = objects[0]
 
-    force.check_eq()
     form.check_eq()
+    force.check_eq()
 
     # update
     scene.update()
