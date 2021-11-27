@@ -15,6 +15,9 @@ from compas_3gs.rhino.objects.networkobject import NetworkObject
 
 from compas_3gs.utilities import get_force_colors_uv
 
+from compas_pgs.rhino import ExternalForcesConduit
+
+
 __all__ = ['FormNetworkObject']
 
 
@@ -29,8 +32,8 @@ class FormNetworkObject(NetworkObject):
 
         'show.nodes': True,
         'show.edges': True,
-        'show.loads': True,
         'show.pipes': False,
+        'show.externalforces': True,
 
         'color.invalid': (100, 255, 100),
 
@@ -40,11 +43,15 @@ class FormNetworkObject(NetworkObject):
         'color.edges': (0, 0, 0),
         'color.pipes': (0, 0, 0),
 
+        'color.externalforces': (0, 200, 0),
+
         'scale.loads': 0.100,
         'scale.pipes': 0.100,
+        'scale.externalforces': 1.000,
 
         'tol.loads': 1e-3,
-        'tol.pipes': 1e-3
+        'tol.pipes': 1e-3,
+        'tol.externalforces': 1e-3,
     }
 
     def __init__(self, diagram, *args, **kwargs):
@@ -54,6 +61,7 @@ class FormNetworkObject(NetworkObject):
         if settings:
             self.settings.update(settings)
         self._guid_loads = {}
+        self._conduit_externalforces = None
 
     @property
     def node_xyz(self):
@@ -92,6 +100,17 @@ class FormNetworkObject(NetworkObject):
     def guid_pipe(self, values):
         self._guid_pipe = dict(values)
 
+    @property
+    def conduit_externalforces(self):
+        if self._conduit_externalforces is None:
+            conduit_externalforces = ExternalForcesConduit(
+                network=self.diagram,
+                color=self.settings['color.externalforces'],
+                scale=self.settings['scale.externalforces'],
+                tol=self.settings['tol.externalforces'])
+            self._conduit_externalforces = conduit_externalforces
+        return self._conduit_externalforces
+
     def check_eq(self):
         tol = self.scene.settings['3GS']['tol.angles']
         edges = list(self.diagram.edges())
@@ -101,6 +120,14 @@ class FormNetworkObject(NetworkObject):
             self.settings['_is.valid'] = False
         else:
             self.settings['_is.valid'] = True
+
+    def clear_conduits(self):
+        try:
+            self.conduit_externalforces.disable()
+        except Exception:
+            pass
+        finally:
+            del self._conduit_externalforces
 
     def clear(self):
         super(FormNetworkObject, self).clear()
@@ -284,15 +311,21 @@ class FormNetworkObject(NetworkObject):
         # overlays
         # ======================================================================
 
-        if self.settings['show.loads'] and self.settings['_is.valid']:
-            scale = self.settings['scale.loads']
-            guids = self.artist.draw_external_forces(gradient=False, scale=scale)
-            self.guid_edge = zip(guids, self.diagram.dual.cells_on_boundaries())
-            compas_rhino.rs.AddObjectsToGroup(guids, group_loads)
-            compas_rhino.rs.ShowGroup(group_loads)
+        # draw reactions
+        if self.settings['_is.valid'] and self.settings['show.externalforces']:
+            self.conduit_externalforces.color = self.settings['color.externalforces']
+            self.conduit_externalforces.scale = self.settings['scale.externalforces']
+            self.conduit_externalforces.tol = self.settings['tol.externalforces']
+            self.conduit_externalforces.enable()
+            print('draw')
         else:
-            compas_rhino.rs.HideGroup(group_loads)
+            if self.conduit_externalforces:
+                try:
+                    self.conduit_externalforces.disable()
+                except Exception:
+                    pass
 
+        # pipes
         if self.settings['show.pipes'] and self.settings['_is.valid']:
             tol = self.settings['tol.pipes']
             edges = list(self.diagram.edges())

@@ -140,6 +140,7 @@ class Scene(object):
         try:
             for guid in list(self.objects.keys()):
                 self.objects[guid].clear()
+                self.objects[guid].clear_conduits()
         except Exception:
             pass
         compas_rhino.rs.EnableRedraw(True)

@@ -70,6 +70,9 @@ class ForceVolMeshObject(VolMeshObject):
         if fmax < ftol and amax < atol:
             self.settings['_is.valid'] = True
 
+    def clear_conduits(self):
+        pass
+
     # @property
     # def vertex_xyz(self):
     #     """dict : The view coordinates of the mesh object."""
