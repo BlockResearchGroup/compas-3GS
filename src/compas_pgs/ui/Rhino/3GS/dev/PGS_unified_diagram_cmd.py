@@ -2,9 +2,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
 
-import compas
-
-import scriptcontext as sc
+import rhinoscriptsyntax as rs
 
 import compas_rhino
 
@@ -12,36 +10,31 @@ from compas_3gs.algorithms import volmesh_ud
 
 from compas_3gs.utilities import get_force_colors_uv
 
-try:
-    import rhinoscriptsyntax as rs
-except ImportError:
-    compas.raise_if_ironpython()
+from compas_pgs.rhino import get_scene
+from compas_pgs.rhino import pgs_undo
 
 
 __commandname__ = "PGS_unified_diagram"
 
 
+@pgs_undo
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
-        compas_rhino.display_message('3GS has not been initialised yet.')
+    scene = get_scene()
+    if not scene:
         return
-
-    scene = sc.sticky['3GS']['scene']
 
     # get ForceVolMeshObject from scene
-    objects = scene.find_by_name('force')
-    if not objects:
-        compas_rhino.display_message("There is no force diagram in the scene.")
+    force = scene.get("force")[0]
+    if not force:
+        print("There is no force diagram in the scene.")
         return
-    force = objects[0]
 
     # get ForceVolMeshObject from scene
-    objects = scene.find_by_name('form')
-    if not objects:
-        compas_rhino.display_message("There is no form diagram in the scene.")
+    form = scene.get("form")[0]
+    if not force:
+        print("There is no form diagram in the scene.")
         return
-    form = objects[0]
 
     # check global constraints -------------------------------------------------
 
@@ -56,8 +49,8 @@ def RunCommand(is_interactive):
         if option == "No":
             return
 
-    show_loads = form.settings['show.loads']
-    form.settings['show.loads'] = False
+    show_loads = form.settings['show.externalforces']
+    form.settings['show.externalforces'] = False
 
     # unified diagram ----------------------------------------------------------
     while True:
@@ -96,9 +89,11 @@ def RunCommand(is_interactive):
 
         form.artist.draw_edges(color=uv_c_dict)
 
-    form.settings['show.loads'] = show_loads
+    # --------------------------------------------------------------------------
 
-    scene.save()
+    form.settings['show.externalforces'] = show_loads
+
+    scene.update()
 
 # ==============================================================================
 # Main

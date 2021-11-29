@@ -3,18 +3,16 @@ from __future__ import absolute_import
 from __future__ import division
 
 from collections import OrderedDict
-import scriptcontext as sc
 
 import Eto.Drawing as drawing
 import Eto.Forms as forms
 import Rhino.UI
 
 
-__all__ = ["SettingsForm", "Settings_Tab"]
-
-
-def get_scene():
-    return sc.sticky['3GS']['scene']
+__all__ = [
+    "Settings_Tab",
+    "SettingsForm"
+]
 
 
 class Settings_Tab(forms.TabPage):
@@ -62,7 +60,7 @@ class Settings_Tab(forms.TabPage):
                     control = forms.CheckBox()
                     control.Checked = value
                     control.CheckedChanged += tab.EditEvent(key)
-                elif (type(value) == list or type(value) == tuple) and len(value) == 3:
+                elif type(value) == list and len(value) == 3:
                     control = forms.ColorPicker()
                     control.Value = drawing.Color.FromArgb(*value)
                     control.ValueChanged += tab.EditEvent(key)
@@ -70,8 +68,8 @@ class Settings_Tab(forms.TabPage):
                     control = forms.NumericUpDown()
                     if type(value) == float:
                         digits = len(str(value).split('.')[-1])
-                        control.DecimalPlaces = (digits + 2)
-                        control.Increment = 0.1 ** (digits + 2)
+                        control.DecimalPlaces = (digits+1)
+                        control.Increment = 0.1 ** (digits+1)
                     control.Value = value
                     control.ValueChanged += tab.EditEvent(key)
                 else:
@@ -126,12 +124,19 @@ class SettingsForm(forms.Dialog[bool]):
 
         # pre-populate class default settings
         if object_types:
-            for object_type in object_types:  # avoid property objects
-                all_settings[object_type.__name__] = object_type.SETTINGS
+            for object_type_name in object_types:
+                object_type = [object_type for object_type in scene.registered_object_types if object_type.__name__ == object_type_name]
+                if len(object_type) > 0:
+                    object_type = object_type[0]
+                    if hasattr(object_type, 'SETTINGS'):
+                        if isinstance(object_type.SETTINGS, dict):  # avoid property objects
+                            all_settings[object_type.__name__] = object_type.SETTINGS
+                else:
+                    raise TypeError("%s is not registered in the scene" % object_type_name)
 
         # overwite with object setting if added as node
-        for key in scene.objects:
-            node = scene.objects[key]
+        for key in scene.nodes:
+            node = scene.nodes[key]
             node_type = node.__class__.__name__
             if node_type in all_settings:
                 all_settings[node_type] = node.settings
@@ -219,12 +224,3 @@ class SettingsForm(forms.Dialog[bool]):
 
     def on_cancel(self, sender, event):
         self.Close()
-
-
-if __name__ == "__main__":
-
-    from compas_ags.rhino import FormObject
-    from compas_ags.rhino import ForceObject
-    scene = get_scene()
-    SettingsForm.from_scene(scene, object_types=[FormObject, ForceObject])
-    # SettingsForm.from_settings(scene.settings, "solver")

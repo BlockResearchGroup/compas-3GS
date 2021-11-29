@@ -2,44 +2,36 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
 
-import scriptcontext as sc
-
 from compas.utilities import i_to_red
 
 import compas_rhino
 
 from compas_3gs.algorithms import volmesh_planarise
-
-from compas_3gs.rhino import VolmeshConduit
-
 from compas_3gs.utilities import volmesh_face_flatness
 from compas_3gs.utilities import compare_initial_current
+
+from compas_pgs.rhino import VolmeshConduit
+from compas_pgs.rhino import get_scene
+from compas_pgs.rhino import pgs_undo
 
 
 __commandname__ = "PGS_force_planarize"
 
 
+@pgs_undo
 def RunCommand(is_interactive):
 
-    sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
-
-    if '3GS' not in sc.sticky:
-        compas_rhino.display_message('3GS has not been initialised yet.')
-        return
-
-    scene = sc.sticky['3GS']['scene']
+    scene = get_scene()
     if not scene:
         return
 
-    # get ForceVolMeshObject from scene ----------------------------------------
-    objects = scene.find_by_name('force')
-    if not objects:
-        compas_rhino.display_message("There is no force diagram in the scene.")
+    # get ForceVolMeshObject from scene
+    force = scene.get("force")[0]
+    if not force:
+        print("There is no force diagram in the scene.")
         return
-    force = objects[0]
 
     # --------------------------------------------------------------------------
-
     current_setting = force.settings['show.vertices']
     if not current_setting:
         force.settings['show.vertices'] = True
@@ -121,21 +113,19 @@ def RunCommand(is_interactive):
                               print_result_info=True)
 
     # check if there is form diagram -------------------------------------------
-    objects = scene.find_by_name('form')
-    if not objects:
+    form = scene.get("form")[0]
+    if not form:
         force.check_eq()
         scene.update()
         return
-    form = objects[0]
-
-    # update -------------------------------------------------------------------
-    force.settings['show.vertices'] = current_setting
 
     form.diagram.update_angle_deviations()
 
-    form.check_eq()
+    # update -------------------------------------------------------------------
     force.check_eq()
+    form.check_eq()
 
+    force.settings['show.vertices'] = current_setting
     scene.update()
     scene.save()
 

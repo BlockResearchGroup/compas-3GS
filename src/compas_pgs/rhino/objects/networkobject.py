@@ -22,6 +22,14 @@ class NetworkObject(NetworkObject):
     def diagram(self, diagram):
         self.network = diagram
 
+    @property
+    def datastructure(self):
+        return self.network
+
+    @datastructure.setter
+    def datastructure(self, datastructure):
+        self.network = datastructure
+
     def select_node(self, message="Select vertices."):
         """Select vertices of the volmesh.
 

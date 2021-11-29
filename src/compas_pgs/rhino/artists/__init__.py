@@ -2,12 +2,6 @@ from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import division
 
-
-from .formnetworkartist import *  # noqa: F401 F403
-from .forcevolmeshartist import *  # noqa: F401 F403
-from .networkartist import *  # noqa: F401 F403
-from .volmeshartist import *  # noqa: F401 F403
-
 from compas_3gs.diagrams import ForceVolMesh
 from compas_3gs.diagrams import FormNetwork
 

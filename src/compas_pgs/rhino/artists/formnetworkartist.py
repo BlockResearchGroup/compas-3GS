@@ -13,7 +13,7 @@ from compas.geometry import length_vector
 
 from compas.utilities import i_to_green
 
-from compas_3gs.rhino.artists.networkartist import NetworkArtist
+from .networkartist import NetworkArtist
 
 from compas_3gs.utilities import valuedict_to_colordict
 from compas_3gs.utilities import get_force_mags

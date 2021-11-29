@@ -2,33 +2,33 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
 
-import scriptcontext as sc
-
-import compas_rhino
-
 from compas_rhino.objects import mesh_select_face
 
 from compas_3gs.rhino import rhino_volmesh_pull_halffaces
 
-from compas_3gs.rhino import VolmeshHalffaceInspector
+
+from compas_pgs.rhino import get_scene
+from compas_pgs.rhino import pgs_undo
+from compas_pgs.rhino import VolmeshHalffaceInspector
+
 
 __commandname__ = "PGS_force_pull_halffaces"
 
 
+@pgs_undo
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
-        compas_rhino.display_message('3GS has not been initialised yet.')
+    scene = get_scene()
+    if not scene:
         return
-
-    scene = sc.sticky['3GS']['scene']
 
     # get ForceVolMeshObject from scene
-    objects = scene.find_by_name('force')
-    if not objects:
-        compas_rhino.display_message("There is no force diagram in the scene.")
+    force = scene.get("force")[0]
+    if not force:
+        print("There is no force diagram in the scene.")
         return
-    force = objects[0]
+
+    # --------------------------------------------------------------------------
 
     current_setting = force.settings['show.faces']
     if not current_setting:
@@ -50,15 +50,12 @@ def RunCommand(is_interactive):
     # pull faces ---------------------------------------------------------------
     rhino_volmesh_pull_halffaces(force.diagram, hfkey=halfface)
 
-    force.settings['show.faces'] = current_setting
-
     # check if there is form diagram -------------------------------------------
-    objects = scene.find_by_name('form')
-    if not objects:
+    form = scene.get("form")[0]
+    if not form:
         force.check_eq()
         scene.update()
         return
-    form = objects[0]
 
     # update -------------------------------------------------------------------
     form.diagram.update_angle_deviations()
@@ -66,8 +63,8 @@ def RunCommand(is_interactive):
     form.check_eq()
     force.check_eq()
 
+    force.settings['show.faces'] = current_setting
     scene.update()
-    scene.save()
 
 
 # ==============================================================================

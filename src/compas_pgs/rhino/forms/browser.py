@@ -11,6 +11,11 @@ import Rhino
 import compas
 
 
+__all__ = [
+    "Browser"
+]
+
+
 class BrowserForm(forms.Form):
 
     def __init__(self, url=None, width=800, height=400):
@@ -47,7 +52,3 @@ class BrowserForm(forms.Form):
 def Browser():
     browserForm = BrowserForm()
     browserForm.Show()
-
-
-if __name__ == "__main__":
-    Browser()

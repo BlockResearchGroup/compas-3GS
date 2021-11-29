@@ -137,6 +137,8 @@ class ExternalForcesConduit(BaseConduit):
             ep = add_vectors(sp, r)
             if length_vector_sqrd(r) < self.tol ** 2:
                 continue
+            if self.network.dual.attributes['convention'] == -1:
+                sp, ep = ep, sp
             line = Line(Point3d(*sp), Point3d(*ep))
             e.Display.DrawArrow(line,
                                 FromArgb(*self.color),

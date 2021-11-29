@@ -20,6 +20,9 @@ from compas_skeleton.datastructure import Skeleton3D_Node
 from compas_skeleton.datastructure import Skeleton3D
 from compas_rhino.artists import MeshArtist
 
+from compas_pgs.rhino import get_scene
+from compas_pgs.rhino import pgs_undo
+
 
 __commandname__ = "PGS_skeleton"
 
@@ -244,20 +247,18 @@ config_modify = {
 }
 
 
+@pgs_undo
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
-        compas_rhino.display_message('3GS has not been initialised yet.')
+    scene = get_scene()
+    if not scene:
         return
-
-    scene = sc.sticky['3GS']['scene']
 
     # get ForceVolMeshObject from scene
-    objects = scene.find_by_name('form')
-    if not objects:
-        compas_rhino.display_message("There is no FormDiagram in the scene.")
+    form = scene.get("form")[0]
+    if not form:
+        print("There is no form diagram in the scene.")
         return
-    form = objects[0]
 
     # --------------------------------------------------------------------------
 
@@ -282,7 +283,7 @@ def RunCommand(is_interactive):
         sk3, guid = action['action'](**kwargs)
 
     else:
-        raise NotImplementedError
+        print('This feature has not yet been implemented.')
         # joint_width = compas_rhino.rs.GetReal('joint node widths:')
         # leaf_width = compas_rhino.rs.GetReal('leaf node widths:')
         # kwargs = {
@@ -303,8 +304,9 @@ def RunCommand(is_interactive):
 
         sk3, guid = action['action'](sk3, guid)
 
+    # --------------------------------------------------------------------------
+
     scene.update()
-    scene.save()
 
 
 # ==============================================================================

@@ -6,7 +6,7 @@ from compas.utilities import i_to_rgb
 
 import compas_rhino
 
-from compas_3gs.rhino.objects.volmeshobject import VolMeshObject
+from .volmeshobject import VolMeshObject
 
 from compas_3gs.utilities import volmesh_face_flatness
 
@@ -32,18 +32,19 @@ class ForceVolMeshObject(VolMeshObject):
         'show.facelabels': False,
         'show.celllabels': False,
 
-        'color.invalid': (100, 255, 100),
+        'color.invalid': [100, 255, 100],
 
-        'color.vertices': (0, 0, 0),
-        'color.vertexlabels': (255, 255, 255),
-        'color.vertices:is_fixed': (0, 0, 255),
+        'color.vertices': [0, 0, 0],
+        'color.vertexlabels': [255, 255, 255],
+        'color.vertices:is_fixed': [0, 0, 255],
 
-        'color.edges': (50, 50, 50),
+        'color.edges': [50, 50, 50],
 
-        'color.faces': (200, 200, 200),
-        'color.facelabels': (200, 200, 200),
+        'color.faces': [200, 200, 200],
+        'color.facelabels': [200, 200, 200],
 
-        'color.celllabels': (0, 0, 255)
+        'color.cells': [0, 0, 255],
+        'color.celllabels': [0, 0, 255]
     }
 
     def __init__(self, diagram, *args, **kwargs):

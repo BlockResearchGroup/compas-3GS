@@ -8,33 +8,32 @@ import compas_rhino
 
 from compas_3gs.algorithms import volmesh_reciprocate
 
-from compas_3gs.rhino import ReciprocationConduit
+from compas_pgs.rhino import ReciprocationConduit
+from compas_pgs.rhino import get_scene
+from compas_pgs.rhino import pgs_undo
 
 
 __commandname__ = "PGS_reciprocate"
 
 
+@pgs_undo
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
-        compas_rhino.display_message('3GS has not been initialised yet.')
+    scene = get_scene()
+    if not scene:
         return
-
-    scene = sc.sticky['3GS']['scene']
 
     # get ForceVolMeshObject from scene
-    objects = scene.find_by_name('force')
-    if not objects:
-        compas_rhino.display_message("There is no ForceDiagram in the scene.")
+    force = scene.get("force")[0]
+    if not force:
+        print("There is no force diagram in the scene.")
         return
-    force = objects[0]
 
     # get ForceVolMeshObject from scene
-    objects = scene.find_by_name('form')
-    if not objects:
-        compas_rhino.display_message("There is no FormDiagram in the scene.")
+    form = scene.get("form")[0]
+    if not force:
+        print("There is no form diagram in the scene.")
         return
-    form = objects[0]
 
     # --------------------------------------------------------------------------
 
@@ -90,6 +89,10 @@ def RunCommand(is_interactive):
 
     # --------------------------------------------------------------------------
 
+    form.artist.clear()
+
+    # --------------------------------------------------------------------------
+
     if refresh > 0:
 
         conduit = ReciprocationConduit(force.diagram, form.diagram)
@@ -125,13 +128,13 @@ def RunCommand(is_interactive):
 
     form.diagram.update_angle_deviations()
 
+    # update -------------------------------------------------------------------
     form.settings['show.nodes'] = current_setting
 
     force.check_eq()
     form.check_eq()
 
     scene.update()
-    scene.save()
 
 
 # ==============================================================================

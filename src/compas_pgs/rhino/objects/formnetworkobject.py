@@ -11,7 +11,7 @@ from compas.utilities import i_to_rgb
 
 import compas_rhino
 
-from compas_3gs.rhino.objects.networkobject import NetworkObject
+from .networkobject import NetworkObject
 
 from compas_3gs.utilities import get_force_colors_uv
 
@@ -35,19 +35,19 @@ class FormNetworkObject(NetworkObject):
         'show.pipes': False,
         'show.externalforces': True,
 
-        'color.invalid': (100, 255, 100),
+        'color.invalid': [100, 255, 100],
 
-        'color.node': (0, 0, 0),
-        'color.nodes:is_fixed': (0, 0, 255),
+        'color.nodes': [0, 0, 0],
+        'color.nodes:is_fixed': [0, 0, 255],
 
-        'color.edges': (0, 0, 0),
-        'color.pipes': (0, 0, 0),
+        'color.edges': [0, 0, 0],
+        'color.pipes': [0, 0, 0],
 
-        'color.externalforces': (0, 200, 0),
+        'color.externalforces': [0, 200, 0],
 
         'scale.loads': 0.100,
         'scale.pipes': 0.100,
-        'scale.externalforces': 1.000,
+        'scale.externalforces': 0.100,
 
         'tol.loads': 1e-3,
         'tol.pipes': 1e-3,
@@ -317,7 +317,6 @@ class FormNetworkObject(NetworkObject):
             self.conduit_externalforces.scale = self.settings['scale.externalforces']
             self.conduit_externalforces.tol = self.settings['tol.externalforces']
             self.conduit_externalforces.enable()
-            print('draw')
         else:
             if self.conduit_externalforces:
                 try:

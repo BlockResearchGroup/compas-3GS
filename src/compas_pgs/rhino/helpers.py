@@ -19,7 +19,7 @@ __all__ = [
     "is_valid_file",
     "select_filepath_open",
     "select_filepath_save",
-    "get_tgs",
+    "get_pgs",
     "get_scene",
     "get_proxy",
     "get_system",
@@ -27,7 +27,7 @@ __all__ = [
     "select_vertices",
     "select_edges",
     "select_faces",
-    "PGS_undo",
+    "pgs_undo",
     "relocate_formdiagram"
 
 ]
@@ -172,7 +172,7 @@ def select_filepath_save(root, ext):
     return filepath
 
 
-def get_tgs():
+def get_pgs():
     if "3GS" not in sc.sticky:
         form = TextForm('Initialise the plugin first!', '3GS')
         form.show()
@@ -181,9 +181,9 @@ def get_tgs():
 
 
 def get_scene():
-    tgs = get_tgs()
-    if tgs:
-        return tgs['scene']
+    pgs = get_pgs()
+    if pgs:
+        return pgs['scene']
 
 
 def get_proxy():
@@ -210,10 +210,10 @@ def save_session():
     }
     form = scene.get('form')[0]
     if form:
-        session['data']['form'] = form.datastructure.to_data()
+        session['data']['form'] = form.diagram.to_data()
     force = scene.get('force')[0]
     if force:
-        session['data']['force'] = force.datastructure.to_data()
+        session['data']['force'] = force.diagram.to_data()
     return session
 
 
@@ -268,8 +268,10 @@ def undo(sender, e):
     print("total sessions:", len(sc.sticky["3GS.sessions"]))
 
 
-def PGS_undo(command):
+def pgs_undo(command):
     def wrapper(*args, **kwargs):
+        if not get_pgs():
+            return
         sc.doc.EndUndoRecord(sc.doc.CurrentUndoRecordSerialNumber)
         undoRecord = sc.doc.BeginUndoRecord("3GS Undo")
         if undoRecord == 0:

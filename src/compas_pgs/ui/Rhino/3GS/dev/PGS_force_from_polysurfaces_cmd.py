@@ -2,36 +2,31 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
 
-import compas
-
-import scriptcontext as sc
+import rhinoscriptsyntax as rs
 
 import compas_rhino
 
 from compas_3gs.diagrams.polyhedral import ForceVolMesh
 
-from compas_rhino.utilities import volmesh_from_polysurfaces
+from compas_pgs.rhino import get_scene
+from compas_pgs.rhino import pgs_undo
 
-try:
-    import rhinoscriptsyntax as rs
-except ImportError:
-    compas.raise_if_ironpython()
+from compas_rhino.utilities import volmesh_from_polysurfaces
 
 
 __commandname__ = "PGS_force_from_polysurfaces"
 
 
+@pgs_undo
 def RunCommand(is_interactive):
 
-    if '3GS' not in sc.sticky:
-        compas_rhino.display_message('3GS has not been initialised yet.')
+    scene = get_scene()
+    if not scene:
         return
 
-    scene = sc.sticky['3GS']['scene']
-
     # get ForceVolMeshObject from scene
-    objects = scene.find_by_name('force')
-    if objects:
+    force = scene.get("force")[0]
+    if force:
         compas_rhino.display_message("Force diagram already exists in the scene!")
         return
 
@@ -42,17 +37,12 @@ def RunCommand(is_interactive):
     compas_rhino.rs.HideObjects(guids)
 
     force = volmesh_from_polysurfaces(ForceVolMesh, guids)
-
-    scene.purge()
     scene.add_forcevolmesh(force, name='force', layer='3GS::ForceDiagram')
 
-    objects = scene.find_by_name('force')
-    force = objects[0]
-
+    force = scene.get("force")[0]
     force.check_eq()
 
     scene.update()
-    scene.save()
 
     print('Polyhedral force diagram successfully created.')
 

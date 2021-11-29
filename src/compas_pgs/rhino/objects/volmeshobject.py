@@ -19,3 +19,11 @@ class VolMeshObject(VolMeshObject):
     @diagram.setter
     def diagram(self, diagram):
         self.volmesh = diagram
+
+    @property
+    def datastructure(self):
+        return self.volmesh
+
+    @datastructure.setter
+    def datastructure(self, datastructure):
+        self.volmesh = datastructure
