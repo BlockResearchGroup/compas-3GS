@@ -28,9 +28,9 @@ class ForceVolMeshObject(VolMeshObject):
         'show.vertices': True,
         'show.edges': True,
         'show.faces': True,
-        'show.vertexlabels': False,
-        'show.facelabels': False,
-        'show.celllabels': False,
+        # 'show.vertexlabels': False,
+        # 'show.facelabels': False,
+        # 'show.celllabels': False,
 
         'color.invalid': [100, 255, 100],
 
@@ -305,6 +305,7 @@ class ForceVolMeshObject(VolMeshObject):
 
 
         colordict = {face: colors[face] if self.settings['_is.valid'] else self.settings['color.invalid'] for face in halffaces}
+
         if self.settings['show.faces']:
             guids = self.artist.draw_faces(halffaces, colordict)
             self.guid_face = zip(guids, halffaces)
@@ -319,7 +320,7 @@ class ForceVolMeshObject(VolMeshObject):
         # halfface labels ------------------------------------------------------
         if self.settings["show.facelabels"] and self.settings['_is.valid']:
             text = {halfface: index for index, halfface in enumerate(halffaces)}
-            guids = self.artist.draw_facelabels(text=text, color=color)
+            guids = self.artist.draw_facelabels(text=text, color=colordict)
             self.guid_facelabel = zip(guids, halffaces)
             compas_rhino.rs.AddObjectsToGroup(guids, group_halffaces_labels)
 
@@ -364,8 +365,8 @@ class ForceVolMeshObject(VolMeshObject):
                     guids = self.artist.draw_facelabels(text, color)
                     self.guid_facelabel = zip(guids, halffaces)
                     compas_rhino.rs.AddObjectsToGroup(guids, group_angles)
+
                     compas_rhino.rs.ShowGroup(group_angles)
         else:
             compas_rhino.rs.HideGroup(group_angles)
-
         self.redraw()

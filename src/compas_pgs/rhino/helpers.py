@@ -210,10 +210,10 @@ def save_session():
     }
     form = scene.get('form')[0]
     if form:
-        session['data']['form'] = form.diagram.to_data()
+        session['data']['form'] = form.datastructure.to_data()
     force = scene.get('force')[0]
     if force:
-        session['data']['force'] = force.diagram.to_data()
+        session['data']['force'] = force.datastructure.to_data()
     return session
 
 
@@ -233,7 +233,6 @@ def load_session(session):
             force = ForceVolMesh.from_data(data['force'])
             force.primal = form
             form.dual = force
-            force.update_angle_deviations()
             scene.add(force, name="force")
     scene.update()
 

@@ -20,13 +20,3 @@ class VolMeshArtist(VolMeshArtist):
         self.color_edges = self.edge_color
         self.color_faces = self.face_color
         self.color_cells = self.cell_color
-
-    @property
-    def diagram(self):
-        """The diagram assigned to the artist."""
-        return self.volmesh
-
-    @diagram.setter
-    def diagram(self, diagram):
-        self.volmesh = diagram
-

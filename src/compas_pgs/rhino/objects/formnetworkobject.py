@@ -129,12 +129,12 @@ class FormNetworkObject(NetworkObject):
         finally:
             del self._conduit_externalforces
 
-    def clear(self):
-        super(FormNetworkObject, self).clear()
-        guids = []
-        guids += list(self.guid_loads)
-        compas_rhino.delete_objects(guids, purge=True)
-        self._guid_loads = {}
+    # def clear(self):
+    #     super(FormNetworkObject, self).clear()
+    #     guids = []
+    #     guids += list(self.guid_loads)
+    #     compas_rhino.delete_objects(guids, purge=True)
+    #     self._guid_loads = {}
 
     # --------------------------------------------------------------------------
     #   attributes
@@ -219,9 +219,9 @@ class FormNetworkObject(NetworkObject):
 
         group_nodes = "{}::nodes".format(layer)
         group_edges = "{}::edges".format(layer)
-        group_angles = "{}::angles".format(layer)
         group_loads = "{}::loads".format(layer)
         group_pipes = "{}::pipes".format(layer)
+        group_angles = "{}::angles".format(layer)
 
         if not compas_rhino.rs.IsGroup(group_nodes):
             compas_rhino.rs.AddGroup(group_nodes)
@@ -302,6 +302,7 @@ class FormNetworkObject(NetworkObject):
                         color[edge] = i_to_rgb((angle - amin) / (amax - amin))
                 guids = self.artist.draw_edgelabels(text, color)
                 self.guid_edgelabel = zip(guids, edges)
+
                 compas_rhino.rs.AddObjectsToGroup(guids, group_angles)
                 compas_rhino.rs.ShowGroup(group_angles)
         else:
