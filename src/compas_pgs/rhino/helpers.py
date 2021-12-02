@@ -301,7 +301,7 @@ def relocate_formdiagram(force, form):
     ymin_form, ymax_form = bbox_form[0][1], bbox_form[3][1]
     y_force = ymin_force + 0.5 * (ymax_force - ymin_force)
     y_form = ymin_form + 0.5 * (ymax_form - ymin_form)
-    dx = 1.5 * (xmax_force - xmin_force) + (xmin_force - xmin_form)
+    dx = 2.0 * (xmax_force - xmin_force) + (xmin_force - xmin_form)
     dy = y_force - y_form
 
     return (dx, dy, 0)
