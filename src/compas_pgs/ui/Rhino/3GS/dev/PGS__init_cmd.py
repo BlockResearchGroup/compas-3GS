@@ -10,10 +10,10 @@ import compas_rhino
 
 compas_rhino.unload_modules('compas_pgs')
 
-from compas_pgs.scene import Scene
-from compas_pgs.rhino import Browser
-from compas_pgs.activate import check
-from compas_pgs.activate import activate
+from compas_pgs.scene import Scene  # noqa: E402
+from compas_pgs.rhino import Browser  # noqa: E402
+from compas_pgs.activate import check  # noqa: E402
+from compas_pgs.activate import activate  # noqa: E402
 
 
 __commandname__ = "PGS__init"
