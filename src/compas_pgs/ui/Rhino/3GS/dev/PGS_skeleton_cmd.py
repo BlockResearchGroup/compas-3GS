@@ -264,34 +264,19 @@ def RunCommand(is_interactive):
 
     # draw skeleton from form ...
 
-    menu = CommandMenu(config)
-    action = menu.select_action()
-
     lines = [form.network.edge_coordinates(u, v) for u, v in form.network.edges()]
 
-    if action['name'] == 'Exoskeleton':
-        branch_radius = compas_rhino.rs.GetReal('branch radius:')
-        node_radius_fac = compas_rhino.rs.GetReal('node size factor:', number=1, minimum=1)
-        # segments = compas_rhino.rs.GetInteger('profile segments?', number=4, minimum=3)
-        kwargs = {
-            'lines': lines,
-            'branch_radius': branch_radius,
-            'node_radius_fac': node_radius_fac,
-            # 'segments': segments
-        }
+    branch_radius = compas_rhino.rs.GetReal('branch radius:')
+    node_radius_fac = compas_rhino.rs.GetReal('node size factor:', number=1, minimum=1)
+    # segments = compas_rhino.rs.GetInteger('profile segments?', number=4, minimum=3)
+    kwargs = {
+        'lines': lines,
+        'branch_radius': branch_radius,
+        'node_radius_fac': node_radius_fac,
+        # 'segments': segments
+    }
 
-        sk3, guid = action['action'](**kwargs)
-
-    else:
-        print('This feature has not yet been implemented.')
-        # joint_width = compas_rhino.rs.GetReal('joint node widths:')
-        # leaf_width = compas_rhino.rs.GetReal('leaf node widths:')
-        # kwargs = {
-        #     'lines': lines,
-        #     'joint_width': joint_width,
-        #     'leaf_width': leaf_width
-        # }
-        # action['action'](**kwargs)
+    sk3, guid = create_sk3_exo(**kwargs)
 
     while True:
         menu = CommandMenu(config_modify)
@@ -305,7 +290,6 @@ def RunCommand(is_interactive):
         sk3, guid = action['action'](sk3, guid)
 
     # --------------------------------------------------------------------------
-
     scene.update()
 
 
