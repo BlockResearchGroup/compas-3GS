@@ -76,7 +76,7 @@ def RunCommand(is_interactive):
         elif option == 'Fix_vertices':
             fix_vertices += form.select_vertices()
 
-        elif option == 'RefreshRate':
+        elif option == 'Refreshrate':
             new_refresh = compas_rhino.rs.GetInteger('Refresh rate for dynamic visualisation', refresh, 0, 1000)
             if new_refresh or new_refresh is not None:
                 refresh = new_refresh
