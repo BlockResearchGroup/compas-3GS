@@ -2,6 +2,8 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
 
+import rhinoscriptsyntax as rs
+
 import compas_rhino
 
 from compas_pgs.rhino import get_scene
@@ -25,6 +27,8 @@ def RunCommand(is_interactive):
 
     if option == "Yes":
         scene.clear()
+
+    rs.Command('Show')
 
 
 # ==============================================================================
