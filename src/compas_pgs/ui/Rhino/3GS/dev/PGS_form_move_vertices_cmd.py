@@ -20,7 +20,7 @@ def RunCommand(is_interactive):
 
     # get ForceVolMeshObject from scene
     form = scene.get("form")[0]
-    if not force:
+    if not form:
         print("There is no form diagram in the scene.")
         return
 
