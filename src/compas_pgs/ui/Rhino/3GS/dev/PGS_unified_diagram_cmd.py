@@ -21,6 +21,8 @@ __commandname__ = "PGS_unified_diagram"
 
 def _draw_ud(force, form, scale):
 
+    compas_rhino.clear_layer(force.layer)
+
     # 1. get colors --------------------------------------------------------
     hf_color = (0, 0, 0)
 
@@ -100,7 +102,9 @@ def RunCommand(is_interactive):
 
     go.AddOptionDouble("Alpha", scale_opt)
 
-    compas_rhino.clear_layer(force.layer)
+    show_loads = form.settings['show.externalforces']
+    form.settings['show.externalforces'] = False
+    scene.update()
     compas_rhino.clear_layer(form.layer)
 
     _draw_ud(force, form, 0.50)
@@ -118,6 +122,7 @@ def RunCommand(is_interactive):
 
         if opt == Rhino.Input.GetResult.Cancel:  # esc
             keep = rs.GetString("Keep unified diagram? Press Enter to keep, or ESC to delete and exit.")
+            form.settings['show.externalforces'] = show_loads
             if keep is None:
                 scene.update()
                 return
