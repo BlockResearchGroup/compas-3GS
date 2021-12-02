@@ -225,15 +225,14 @@ def load_session(session):
         scene.settings = session['settings']
     if 'data' in session:
         data = session['data']
+        if 'force' in data and data['force']:
+            force = ForceVolMesh.from_data(data['force'])
+            scene.add(force, name="force")
         if 'form' in data and data['form']:
             form = FormNetwork.from_data(data['form'])
             scene.add(form, name="form")
-
-        if 'force' in data and data['force']:
-            force = ForceVolMesh.from_data(data['force'])
             force.primal = form
             form.dual = force
-            scene.add(force, name="force")
     scene.update()
 
 
