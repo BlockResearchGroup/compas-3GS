@@ -13,8 +13,50 @@ from compas_3gs.utilities import get_force_colors_uv
 from compas_pgs.rhino import get_scene
 from compas_pgs.rhino import pgs_undo
 
+import Rhino
+
 
 __commandname__ = "PGS_unified_diagram"
+
+
+def _draw_ud(force, form, scale):
+
+    # 1. get colors --------------------------------------------------------
+    hf_color = (0, 0, 0)
+
+    uv_c_dict = get_force_colors_uv(force.diagram, form.diagram, gradient=True)
+
+    # 2. compute unified diagram geometries --------------------------------
+    cells, prisms = volmesh_ud(force.diagram, form.diagram, scale=scale)
+
+    # 3. draw --------------------------------------------------------------
+    layer = force.settings["layer"]
+
+    group_cells = "{}::cells".format(layer)
+    group_prisms = "{}::prisms".format(layer)
+
+    if not compas_rhino.rs.IsGroup(group_cells):
+        compas_rhino.rs.AddGroup(group_cells)
+
+    if not compas_rhino.rs.IsGroup(group_prisms):
+        compas_rhino.rs.AddGroup(group_prisms)
+
+    for cell in cells:
+        vertices = cells[cell]['vertices']
+        faces = cells[cell]['faces']
+        guids = compas_rhino.draw_mesh(vertices, faces, layer=force.layer, name=str(cell), color=hf_color, redraw=False)
+        compas_rhino.rs.AddObjectsToGroup(guids, group_cells)
+
+    for edge in prisms:
+        vertices = prisms[edge]['vertices']
+        faces = prisms[edge]['faces']
+        guids = compas_rhino.draw_mesh(vertices, faces, layer=force.layer, name=str(edge), color=uv_c_dict[edge], redraw=False)
+        compas_rhino.rs.AddObjectsToGroup(guids, group_prisms)
+
+    compas_rhino.rs.ShowGroup(group_cells)
+    compas_rhino.rs.ShowGroup(group_prisms)
+
+    form.artist.draw_edges(color=uv_c_dict)
 
 
 @pgs_undo
@@ -49,51 +91,43 @@ def RunCommand(is_interactive):
         if option == "No":
             return
 
-    show_loads = form.settings['show.externalforces']
-    form.settings['show.externalforces'] = False
+    # get scale
+    go = Rhino.Input.Custom.GetOption()
+    go.SetCommandPrompt("Enter scale for unified diagram (press ESC to exit)")
+    go.AcceptNothing(True)
+
+    scale_opt = Rhino.Input.Custom.OptionDouble(0.50, 0.01, 0.99)
+
+    go.AddOptionDouble("Alpha", scale_opt)
+
+    compas_rhino.clear_layer(force.layer)
+    compas_rhino.clear_layer(form.layer)
+
+    _draw_ud(force, form, 0.50)
 
     # unified diagram ----------------------------------------------------------
     while True:
 
         rs.EnableRedraw(True)
 
-        alpha = rs.GetReal('unified diagram scale', minimum=0.01, maximum=1.0)
+        opt = go.Get()
+        scale = scale_opt.CurrentValue
 
-        if alpha is None:
-            break
+        if not opt:
+            print("The scale for unified diagram needs to be between 0.01 and 0.99!")
 
-        if not alpha:
-            break
+        if opt == Rhino.Input.GetResult.Cancel:  # esc
+            keep = rs.GetString("Keep unified diagram? Press Enter to keep, or ESC to delete and exit.")
+            if keep is None:
+                scene.update()
+                return
+            else:
+                _draw_ud(force, form, scale)
+                rs.EnableRedraw(True)
+                return
 
-        compas_rhino.clear_layer(force.layer)
-        compas_rhino.clear_layer(form.layer)
+        _draw_ud(force, form, scale)
 
-        # 1. get colors --------------------------------------------------------
-        hf_color = (0, 0, 0)
-
-        uv_c_dict = get_force_colors_uv(force.diagram, form.diagram, gradient=True)
-
-        # 2. compute unified diagram geometries --------------------------------
-        cells, prisms = volmesh_ud(force.diagram, form.diagram, scale=alpha)
-
-        # 3. draw --------------------------------------------------------------
-        for cell in cells:
-            vertices = cells[cell]['vertices']
-            faces = cells[cell]['faces']
-            compas_rhino.draw_mesh(vertices, faces, layer=force.layer, name=str(cell), color=hf_color, redraw=False)
-
-        for edge in prisms:
-            vertices = prisms[edge]['vertices']
-            faces = prisms[edge]['faces']
-            compas_rhino.draw_mesh(vertices, faces, layer=force.layer, name=str(edge), color=uv_c_dict[edge], redraw=False)
-
-        form.artist.draw_edges(color=uv_c_dict)
-
-    # --------------------------------------------------------------------------
-
-    form.settings['show.externalforces'] = show_loads
-
-    scene.update()
 
 # ==============================================================================
 # Main
