@@ -303,10 +303,10 @@ class FormNetworkObject(NetworkObject):
                 guids = self.artist.draw_edgelabels(text, color)
                 self.guid_edgelabel = zip(guids, edges)
 
-                compas_rhino.rs.AddObjectsToGroup(guids, group_angles)
-                compas_rhino.rs.ShowGroup(group_angles)
-        else:
-            compas_rhino.rs.HideGroup(group_angles)
+        #         compas_rhino.rs.AddObjectsToGroup(guids, group_angles)
+        #         compas_rhino.rs.ShowGroup(group_angles)
+        # else:
+        #     compas_rhino.rs.HideGroup(group_angles)
 
         # ======================================================================
         # overlays

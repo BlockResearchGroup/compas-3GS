@@ -208,12 +208,12 @@ def save_session():
         "data": {"form": None, "force": None},
         "settings": scene.settings,
     }
-    form = scene.get('form')[0]
-    if form:
-        session['data']['form'] = form.datastructure.to_data()
     force = scene.get('force')[0]
     if force:
         session['data']['force'] = force.datastructure.to_data()
+    form = scene.get('form')[0]
+    if form:
+        session['data']['form'] = form.datastructure.to_data()
     return session
 
 
@@ -225,15 +225,17 @@ def load_session(session):
         scene.settings = session['settings']
     if 'data' in session:
         data = session['data']
-        if 'form' in data and data['form']:
-            form = FormNetwork.from_data(data['form'])
-            scene.add(form, name="form")
 
         if 'force' in data and data['force']:
             force = ForceVolMesh.from_data(data['force'])
+            scene.add(force, name="force")
+
+        if 'form' in data and data['form']:
+            form = FormNetwork.from_data(data['form'])
             force.primal = form
             form.dual = force
-            scene.add(force, name="force")
+            scene.add(form, name="form")
+
     scene.update()
 
 

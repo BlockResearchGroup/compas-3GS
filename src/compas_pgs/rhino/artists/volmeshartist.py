@@ -13,8 +13,8 @@ __all__ = ['VolMeshArtist']
 class VolMeshArtist(VolMeshArtist):
     """A customised `VolMeshArtist` for 3GS `VolMesh`-based data structures."""
 
-    def __init__(self, **kwargs):
-        super(VolMeshArtist, self).__init__(**kwargs)
+    def __init__(self, volmesh, **kwargs):
+        super(VolMeshArtist, self).__init__(volmesh, **kwargs)
 
         self.color_vertices = self.vertex_color
         self.color_edges = self.edge_color
