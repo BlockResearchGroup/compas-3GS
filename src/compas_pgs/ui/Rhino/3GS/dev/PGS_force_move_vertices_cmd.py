@@ -35,6 +35,8 @@ def RunCommand(is_interactive):
 
     rhino_vertex_move(force.diagram, vertices)
 
+    force.settings['show.vertices'] = current_setting
+
     # --------------------------------------------------------------------------
     form = scene.get("form")[0]
     if not form:
@@ -48,7 +50,6 @@ def RunCommand(is_interactive):
     force.check_eq()
     form.check_eq()
 
-    force.settings['show.vertices'] = current_setting
     scene.update()
 
 

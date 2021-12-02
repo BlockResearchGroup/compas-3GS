@@ -50,6 +50,8 @@ def RunCommand(is_interactive):
     # pull faces ---------------------------------------------------------------
     rhino_volmesh_pull_halffaces(force.diagram, hfkey=halfface)
 
+    force.settings['show.faces'] = current_setting
+
     # check if there is form diagram -------------------------------------------
     form = scene.get("form")[0]
     if not form:
@@ -63,7 +65,6 @@ def RunCommand(is_interactive):
     form.check_eq()
     force.check_eq()
 
-    force.settings['show.faces'] = current_setting
     scene.update()
 
 

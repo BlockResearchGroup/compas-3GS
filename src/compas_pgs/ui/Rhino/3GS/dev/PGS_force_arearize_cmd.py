@@ -175,6 +175,8 @@ def RunCommand(is_interactive):
                               callback=callback,
                               print_result_info=True)
 
+    force.settings['show.vertices'] = current_setting
+
     # check if there is form diagram -------------------------------------------
     form = scene.get("form")[0]
     if form:
@@ -182,7 +184,6 @@ def RunCommand(is_interactive):
         form.check_eq()
 
     # update -------------------------------------------------------------------
-    force.settings['show.vertices'] = current_setting
 
     force.check_eq()
 
