@@ -111,8 +111,7 @@ def RunCommand(is_interactive):
                         target_text[face] = text
                         target_colors[face] = color
 
-                scene.clear_layers()
-                scene.clear()
+                compas_rhino.clear_layer(force.layer)
                 scene.update()
 
                 force.artist.draw_facelabels(text=target_text, color=target_colors)
@@ -180,11 +179,11 @@ def RunCommand(is_interactive):
     form = scene.get("form")[0]
     if form:
         form.diagram.update_angle_deviations()
+        form.check_eq()
 
     # update -------------------------------------------------------------------
     force.settings['show.vertices'] = current_setting
 
-    form.check_eq()
     force.check_eq()
 
     scene.update()
