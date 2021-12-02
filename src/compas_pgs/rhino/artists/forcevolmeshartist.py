@@ -11,6 +11,9 @@ __all__ = ['ForceVolMeshArtist']
 class ForceVolMeshArtist(VolMeshArtist):
     """Artist for visualizing force diagrams in the Rhino model space."""
 
+    def __init__(self, force, layer=None):
+        super(ForceVolMeshArtist, self).__init__(force, layer=layer)
+
     @property
     def vertex_xyz(self):
         """dict:

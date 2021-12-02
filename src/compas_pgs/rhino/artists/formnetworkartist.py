@@ -35,7 +35,7 @@ class FormNetworkArtist(NetworkArtist):
         The view coordinates default to the actual network coordinates.
         """
         if not self._node_xyz:
-            self._node_xyz = {node: self.diagram.node_attributes(node, 'xyz') + [0.0] for node in self.diagram.nodes()}
+            self._node_xyz = {node: self.network.node_attributes(node, 'xyz') + [0.0] for node in self.network.nodes()}
         return self._node_xyz
 
     @node_xyz.setter
@@ -45,8 +45,8 @@ class FormNetworkArtist(NetworkArtist):
     def draw_external_forces(self, gradient=True, scale=1.0):
         node_xyz = self.node_xyz
 
-        volmesh = self.diagram.dual
-        network = self.diagram
+        volmesh = self.network.dual
+        network = self.network
 
         load_vectors = {}
         load_mags = {}
@@ -90,7 +90,7 @@ class FormNetworkArtist(NetworkArtist):
         node_xyz = self.node_xyz
         cylinders = []
 
-        forces = get_force_mags(self.diagram.dual, self.diagram)
+        forces = get_force_mags(self.network.dual, self.network)
 
         for edge in edges:
             u, v = edge

@@ -1,9 +1,9 @@
 """
 ********************************************************************************
-compas_3gs.rhino
+compas_pgs.rhino
 ********************************************************************************
 
-.. currentmodule:: compas_3gs.rhino
+.. currentmodule:: compas_pgs.rhino
 
 
 Control

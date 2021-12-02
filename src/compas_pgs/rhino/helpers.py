@@ -210,10 +210,10 @@ def save_session():
     }
     force = scene.get('force')[0]
     if force:
-        session['data']['force'] = force.datastructure.to_data()
+        session['data']['force'] = force.diagram.to_data()
     form = scene.get('form')[0]
     if form:
-        session['data']['form'] = form.datastructure.to_data()
+        session['data']['form'] = form.diagram.to_data()
     return session
 
 
