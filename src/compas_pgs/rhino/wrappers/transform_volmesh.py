@@ -23,11 +23,11 @@ from compas_3gs.operations import volmesh_halfface_pinch
 from compas_3gs.operations import volmesh_merge_adjacent_halffaces
 from compas_3gs.operations import volmesh_cell_subdivide_barycentric
 
-from compas_3gs.rhino import VolMeshSelector
-from compas_3gs.rhino import CellSelector
-from compas_3gs.rhino import VolmeshCellInspector
+from compas_pgs.rhino import VolMeshSelector
+from compas_pgs.rhino import CellSelector
+from compas_pgs.rhino import VolmeshCellInspector
 
-from compas_3gs.rhino import get_target_point
+from compas_pgs.rhino import get_target_point
 
 
 try:

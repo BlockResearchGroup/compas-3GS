@@ -4,7 +4,7 @@ from __future__ import division
 
 from compas_rhino.objects import mesh_select_face
 
-from compas_3gs.rhino import rhino_volmesh_pull_halffaces
+from compas_pgs.rhino import rhino_volmesh_pull_halffaces
 
 
 from compas_pgs.rhino import get_scene

@@ -2,7 +2,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
 
-from compas_3gs.rhino import rhino_vertex_move
+from compas_pgs.rhino import rhino_vertex_move
 
 from compas_pgs.rhino import get_scene
 from compas_pgs.rhino import pgs_undo

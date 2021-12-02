@@ -6,7 +6,7 @@ import compas
 
 from compas.geometry import add_vectors
 
-from compas_3gs.rhino.control import get_initial_point
+from compas_pgs.rhino.control import get_initial_point
 
 
 try:

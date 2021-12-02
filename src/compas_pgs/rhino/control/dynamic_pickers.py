@@ -5,8 +5,8 @@ from __future__ import division
 import compas
 from compas.utilities import i_to_rgb
 
-from compas_3gs.rhino.control.inspectors import VolmeshCellInspector
-from compas_3gs.rhino.control.selectors import CellSelector
+from compas_pgs.rhino.control.inspectors import VolmeshCellInspector
+from compas_pgs.rhino.control.selectors import CellSelector
 
 try:
     import rhinoscriptsyntax as rs

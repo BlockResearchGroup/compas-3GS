@@ -4,7 +4,8 @@ from __future__ import division
 
 from compas_3gs.diagrams import FormNetwork
 from compas_3gs.algorithms import volmesh_dual_network
-from compas_3gs.rhino import relocate_formdiagram
+
+from compas_pgs.rhino import relocate_formdiagram
 
 from compas_pgs.rhino import get_scene
 from compas_pgs.rhino import pgs_undo

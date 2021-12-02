@@ -232,9 +232,9 @@ def load_session(session):
 
         if 'form' in data and data['form']:
             form = FormNetwork.from_data(data['form'])
+            scene.add(form, name="form")
             force.primal = form
             form.dual = force
-            scene.add(form, name="form")
 
     scene.update()
 

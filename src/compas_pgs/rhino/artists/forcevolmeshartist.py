@@ -11,9 +11,6 @@ __all__ = ['ForceVolMeshArtist']
 class ForceVolMeshArtist(VolMeshArtist):
     """Artist for visualizing force diagrams in the Rhino model space."""
 
-    def __init__(self, force, layer=None):
-        super(ForceVolMeshArtist, self).__init__(force, layer=layer)
-
     @property
     def vertex_xyz(self):
         """dict:
@@ -23,3 +20,7 @@ class ForceVolMeshArtist(VolMeshArtist):
         if not self._vertex_xyz:
             self._vertex_xyz = {vertex: self.volmesh.vertex_attributes(vertex, 'xy') + [0.0] for vertex in self.volmesh.vertices()}
         return self._vertex_xyz
+
+    @vertex_xyz.setter
+    def vertex_xyz(self, vertex_xyz):
+        self._vertex_xyz = vertex_xyz

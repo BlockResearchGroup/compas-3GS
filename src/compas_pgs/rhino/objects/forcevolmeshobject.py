@@ -188,7 +188,6 @@ class ForceVolMeshObject(VolMeshObject):
         self.clear()
         if not self.visible:
             return
-
         self.artist.vertex_xyz = self.vertex_xyz
 
         # ======================================================================
@@ -302,7 +301,6 @@ class ForceVolMeshObject(VolMeshObject):
                                          self.diagram.primal,
                                          gradient=True)
             halffaces = colors.keys()
-
 
         colordict = {face: colors[face] if self.settings['_is.valid'] else self.settings['color.invalid'] for face in halffaces}
 
