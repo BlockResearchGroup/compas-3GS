@@ -307,13 +307,11 @@ class ForceVolMeshObject(VolMeshObject):
         if self.settings['show.faces']:
             guids = self.artist.draw_faces(halffaces, colordict)
             self.guid_face = zip(guids, halffaces)
+            compas_rhino.rs.AddObjectsToGroup(guids, group_halffaces)
 
-        # compas_rhino.rs.AddObjectsToGroup(guids, group_halffaces)
-
-        # if self.settings['show.faces']:
-        #     compas_rhino.rs.ShowGroup(group_halffaces)
-        # else:
-        #     compas_rhino.rs.HideGroup(group_halffaces)
+            compas_rhino.rs.ShowGroup(group_halffaces)
+        else:
+            compas_rhino.rs.HideGroup(group_halffaces)
 
         # halfface labels ------------------------------------------------------
         if self.settings["show.facelabels"] and self.settings['_is.valid']:
